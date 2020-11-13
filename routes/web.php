@@ -15,14 +15,14 @@ use App\Http\Controllers\ArticleController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
 Route::resource('articles', ArticleController::class);
 Route::get('admindashboard', [App\Http\Controllers\AdminController::class, 'index']);
-Route::get('login1', function() {
+Route::get('login1', function () {
     return view('login1');
 });
