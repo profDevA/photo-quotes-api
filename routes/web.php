@@ -23,3 +23,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('articles', ArticleController::class);
 Route::get('admindashboard', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('login1', function() {
+    return view('login1');
+});
