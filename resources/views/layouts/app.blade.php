@@ -122,7 +122,7 @@
                         @if(Auth::user()->is_admin)
 
                         <li class="nav-item">
-                            <a href="/articles" class="nav-link {{ Request::path() ==  'articles' ? 'active' : ''  }}">
+                            <a href="/articles" class="nav-link {{ request()->is('articles') || request()->is('articles/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-blog"></i>
                                 <p>
                                     Articles
@@ -130,9 +130,18 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="/category" class="nav-link {{ request()->is('category') || request()->is('category/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-blog"></i>
+                                <p>
+                                    Category
+                                </p>
+                            </a>
+                        </li>
+
 
                         <li class="nav-item">
-                            <a href="/articles" class="nav-link {{ Request::path() ==  'qutoes' ? 'active' : ''  }}">
+                            <a href="/articles" class="nav-link {{ request()->is('qutoes') || request()->is('qutoes/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>
                                     Quotes

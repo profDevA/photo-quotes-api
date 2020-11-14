@@ -35,14 +35,23 @@
                     <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <div class="form-group">
+                    <label for="article-featured-image">Select Category:</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <select name="category_id" id="" class="form-control">
+                                @foreach($categories as $key => $category)
+                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="article-featured-image">File input</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image">
                             <label class="custom-file-label" for="article-featured-image">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
                         </div>
                     </div>
                 </div>

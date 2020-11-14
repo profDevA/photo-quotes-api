@@ -21,8 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+
 Route::resource('articles', ArticleController::class);
-Route::get('admindashboard', [App\Http\Controllers\AdminController::class, 'index']);
-Route::get('login1', function () {
-    return view('login1');
-});
+
+Route::resource('category', App\Http\Controllers\CategoryController::class);

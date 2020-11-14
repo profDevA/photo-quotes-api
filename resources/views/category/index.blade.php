@@ -12,52 +12,45 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Articles Page</h1>
+                    <h1 class="m-0 text-dark">Category Page</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Articles</li>
+                        <li class="breadcrumb-item active">Category</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row mb-3">
-                <div class="col">
-                    <a href="{{route('articles.create')}}" class="create-article__link btn btn-primary float-right">New Article</a>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <table id="articleTable" class="table table-bordered table-striped">
+                    <form class="form-inline" method="POST" action="/category">
+                        @csrf
+                        <input type="text" name="name" id="" class="form-control">
+                        <button class="btn btn-primary">Add</button>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="cagetoryTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Category</th>
-                                <th>Article Type</th>
-                                <th>Image Url</th>
-                                <th>Action</th>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($articles as $key=>$article)
+                            @foreach($categories as $key=>$category)
                             <tr>
-                                <td>{{$article->title}}</td>
-                                <td>{{$article->source_id}}</td>
-                                <td>{{$article->category->name}}</td>
-                                <td>{{$article->article_type}}</td>
-                                <td>{{$article->url}}</td>
+                                <td>{{++$key}}</td>
+                                <td>{{$category->name}}</td>
                                 <td>
-                                    <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>
-                                    <a href="{{ route('articles.edit', $article->id) }}" class="edit-article fa fa-edit"></a>
-                                    <form action="{{ route('articles.destroy', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
+                                    <a href="{{ route('category.edit', $category->id) }}" class="edit-article fa fa-edit"></a>
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="delete-article fa fa-trash-alt"></button>
@@ -69,13 +62,25 @@
                     </table>
                 </div>
             </div>
-            <!-- /.row -->
-            <!-- Main row -->
+        </div>
 
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+
+
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
 @endsection
 
@@ -85,7 +90,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#articleTable').DataTable({
+        $('#cagetoryTable').DataTable({
             "paging": true,
             "ordering": true,
             "info": true,
