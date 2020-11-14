@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -27,6 +28,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('articles.create');
     }
 
     /**
@@ -38,6 +40,29 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'article_title' => 'required',
+            'article_content' => 'required',
+            'article_featured_image' => 'required',
+        ]);
+
+        $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();  
+        $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
+
+        $article = new Article;
+        $article->title = $request->input('article_title');
+        $article->text = $request->input('article_content');
+        $article->url = $file_name;
+
+        if (Auth::user()->is_admin == 1) {
+            $article->article_type = 1;
+        } else {
+            $article->article_type = 2;
+        }
+
+        $article->save();
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -48,7 +73,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -60,6 +85,7 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -72,6 +98,29 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $request->validate([
+            'article_title' => 'required',
+            'article_content' => 'required',
+        ]);
+
+        if ($request->file('article_featured_image')) {
+            $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();  
+            $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
+            $article->url = $file_name;
+        }
+
+        $article->title = $request->input('article_title');
+        $article->text = $request->input('article_content');
+
+        if (Auth::user()->is_admin == 1) {
+            $article->article_type = 1;
+        } else {
+            $article->article_type = 2;
+        }
+
+        $article->save();
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -83,5 +132,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+        $article->delete();
+
+        return back();
     }
 }

@@ -10903,3 +10903,17 @@ a.text-dark:focus {
   }
 }
 
+.note-editor.note-frame .note-editing-area .note-editable,
+.note-editor.note-frame .note-editing-area .note-editable {
+  height: 300px;
+}
+
+.delete-article {
+  color: #3490dc;
+  border: none;
+}
+
+.buttons-group .delete-article {
+  color: #ffffff;
+}
+

@@ -28,14 +28,17 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-
+            <div class="row mb-3">
+                <div class="col">
+                    <a href="{{route('articles.create')}}" class="create-article__link btn btn-primary float-right">New Article</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <table id="articleTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Content</th>
                                 <th>Author</th>
                                 <th>Category</th>
                                 <th>Article Type</th>
@@ -47,14 +50,18 @@
                             @foreach($articles as $key=>$article)
                             <tr>
                                 <td>{{$article->title}}</td>
-                                <td>{{$article->text}}</td>
                                 <td>{{$article->source_id}}</td>
                                 <td>{{$article->category_id}}</td>
                                 <td>{{$article->article_type}}</td>
                                 <td>{{$article->url}}</td>
                                 <td>
-                                    <a href="#" class="edit-article fa fa-edit"></a>
-                                    <a href="#" class="delete-article fa fa-trash-alt"></a>
+                                    <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>
+                                    <a href="{{ route('articles.edit', $article->id) }}" class="edit-article fa fa-edit"></a>
+                                    <form action="{{ route('articles.destroy', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="delete-article fa fa-trash-alt"></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -74,10 +81,7 @@
 
 @section('scripts')
 
-<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+
 
 <script>
     $(document).ready(function() {

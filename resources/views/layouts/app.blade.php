@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon_192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_pq@2x.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_pq.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -28,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     @yield('styles')
     <!-- Google Font: Source Sans Pro -->
@@ -150,10 +152,10 @@
 
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2020 <a href="http://photoquotes.com">PhotoQuotes</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
+                <b>Version</b> 1.0
             </div>
         </footer>
 
@@ -197,6 +199,12 @@
     <!-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> -->
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="{{asset('dist/js/demo.js')}}"></script> -->
+
+    <!-- Data tables -->
+    <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
     @yield('scripts')
 </body>
 
