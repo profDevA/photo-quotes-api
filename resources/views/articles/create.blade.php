@@ -35,15 +35,30 @@
                     <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="article-featured-image">Select Category:</label>
+                    <label for="article-title">Author</label>
+                    <input type="text" class="form-control" id="article-title" name="author" placeholder="Author">
+                </div>
+                <div class="form-group">
+                    <label>Select Category</label>
                     <div class="input-group">
-                        <div class="custom-file">
-                            <select name="category_id" id="" class="form-control">
-                                @foreach($categories as $key => $category)
-                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <select name="category_id" id="" class="form-control">
+                            @foreach($categories as $key => $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Visible</label>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="visible" value="1" checked>Visible
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="visible" value="0">Hidden
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">

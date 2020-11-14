@@ -24,7 +24,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form-inline" method="POST" action="/category">
+                    <form class="form-inline float-right" method="POST" action="/category">
                         @csrf
                         <input type="text" name="name" id="" class="form-control">
                         <button class="btn btn-primary">Add</button>

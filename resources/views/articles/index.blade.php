@@ -40,6 +40,7 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Author</th>
+                                <th>Visible</th>
                                 <th>Category</th>
                                 <th>Article Type</th>
                                 <th>Image Url</th>
@@ -50,7 +51,8 @@
                             @foreach($articles as $key=>$article)
                             <tr>
                                 <td>{{$article->title}}</td>
-                                <td>{{$article->source_id}}</td>
+                                <td>{{$article->author}}</td>
+                                <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
                                 <td>{{$article->category->name}}</td>
                                 <td>{{$article->article_type}}</td>
                                 <td>{{$article->url}}</td>

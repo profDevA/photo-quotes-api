@@ -10903,6 +10903,11 @@ a.text-dark:focus {
   }
 }
 
+.content-wrapper {
+  overflow: auto;
+  padding-bottom: 20px;
+}
+
 .note-editor.note-frame .note-editing-area .note-editable,
 .note-editor.note-frame .note-editing-area .note-editable {
   height: 300px;

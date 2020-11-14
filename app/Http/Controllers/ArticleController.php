@@ -54,6 +54,8 @@ class ArticleController extends Controller
         $article = new Article;
         $article->title = $request->input('article_title');
         $article->text = $request->input('article_content');
+        $article->author = $request->input('author');
+        $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
         $article->url = $file_name;
 
@@ -88,7 +90,9 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
-        return view('articles.edit', compact('article'));
+        $categories = Category::all();
+
+        return view('articles.edit', compact('article', 'categories'));
     }
 
     /**
@@ -114,6 +118,9 @@ class ArticleController extends Controller
 
         $article->title = $request->input('article_title');
         $article->text = $request->input('article_content');
+        $article->author = $request->input('author');
+        $article->visible = $request->input('visible');
+        $article->category_id = $request->input('category_id');
 
         if (Auth::user()->is_admin == 1) {
             $article->article_type = 1;
