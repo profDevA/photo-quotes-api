@@ -12,12 +12,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Category Page</h1>
+                        <h1 class="m-0 text-dark">ArticleType Page</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Category</li>
+                            <li class="breadcrumb-item active">ArticleType</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,7 +28,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form-inline float-right" method="POST" action="{{route('category.store')}}">
+                        <form class="form-inline float-right" method="POST" action="{{route('articleTypes.store')}}">
                             @csrf
                             <input type="text" name="name" id="" class="form-control" required>
                             <button class="btn btn-primary">Add</button>
@@ -40,7 +40,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="cagetoryTable" class="table table-bordered table-striped">
+                        <table id="articleTypeTable" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -49,14 +49,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $key=>$category)
+                            @foreach($articleTypes as $key=>$type)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td>{{$category->name}}</td>
+                                    <td>{{$type->name}}</td>
                                     <td>
-                                        <a href="{{ route('category.edit', $category->id) }}"
+                                        <a href="{{ route('articleTypes.edit', $type->id) }}"
                                            class="edit-article fa fa-edit"></a>
-                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST"
+                                        <form action="{{ route('articleTypes.destroy', $type->id) }}" method="POST"
                                               onsubmit="return confirm('Are you sure to delete this article?');"
                                               style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
@@ -85,7 +85,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#cagetoryTable').DataTable({
+            $('#articleTypeTable').DataTable({
                 "paging": true,
                 "ordering": true,
                 "info": true,

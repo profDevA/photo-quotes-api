@@ -33,28 +33,35 @@
                     <a href="{{route('articles.create')}}" class="create-article__link btn btn-primary float-right">New Article</a>
                 </div>
             </div>
+
+            <hr>
+
             <div class="row">
                 <div class="col-md-12">
                     <table id="articleTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Title</th>
                                 <th>Author</th>
+                                <th>Source</th>
                                 <th>Visible</th>
                                 <th>Category</th>
                                 <th>Article Type</th>
-                                <th>Image Url</th>
+                                <th>Url</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($articles as $key=>$article)
                             <tr>
+                                <td>{{++$key}}</td>
                                 <td>{{$article->title}}</td>
                                 <td>{{$article->author}}</td>
+                                <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
                                 <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
-                                <td>{{$article->category->name}}</td>
-                                <td>{{$article->article_type}}</td>
+                                <td>{{$article->category->name ?? ''}}</td>
+                                <td>{{$article->articletype->name ?? ''}}</td>
                                 <td>{{$article->url}}</td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>

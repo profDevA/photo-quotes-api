@@ -13,4 +13,14 @@ class Article extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function source()
+    {
+        return $this->belongsTo('App\Models\Source');
+    }
+
+    public function articletype()
+    {
+        return $this->belongsTo('App\Models\ArticleType', 'article_type', 'id');
+    }
 }

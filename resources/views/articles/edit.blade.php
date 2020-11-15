@@ -32,15 +32,29 @@
                     <input type="text" class="form-control" id="article-title" name="article_title" placeholder="Please Enter title" value="{{ $article->title ?? ''}}">
                 </div>
                 <div class="form-group">
-                    <label for="article-content"></label>
+                    <label for="article-content">Text</label>
                     <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $article->text ?? ''}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="article_url">Url</label>
+                    <input type="text" class="form-control" id="article_url" name="url" placeholder="Article Url" value="{{$article->url}}">
                 </div>
                 <div class="form-group">
                     <label for="article-title">Author</label>
                     <input type="text" class="form-control" id="article-title" name="author" placeholder="Author" value="{{$article->author}}">
                 </div>
                 <div class="form-group">
-                    <label>Select Category</label>
+                    <label>Source</label>
+                    <div class="input-group">
+                        <select name="source_id" id="" class="form-control">
+                            @foreach($sources as $key => $source)
+                                <option value="{{ $source->id }}" {!! $article->source->id == $source->id ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
                     <div class="input-group">
                         <select name="category_id" id="" class="form-control">
                             @foreach($categories as $key => $category)
@@ -63,7 +77,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="article-featured-image">File input</label>
+                    <label for="article-featured-image">Featured Image</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image">

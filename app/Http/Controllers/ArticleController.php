@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleType;
 use App\Models\Category;
+use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +18,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('category')->get();
+        $articles = Article::all();
 
         return view('articles.index', compact('articles'));
     }
@@ -30,7 +32,9 @@ class ArticleController extends Controller
     {
         //
         $categories = Category::all();
-        return view('articles.create', compact('categories'));
+        $sources = Source::all();
+        $articlesTypes = ArticleType::all();
+        return view('articles.create', compact('categories', 'sources', 'articlesTypes'));
     }
 
     /**
@@ -41,14 +45,13 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'article_title' => 'required',
             'article_content' => 'required',
             'article_featured_image' => 'required',
         ]);
 
-        $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();  
+        $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
         $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
 
         $article = new Article;
@@ -57,13 +60,10 @@ class ArticleController extends Controller
         $article->author = $request->input('author');
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
-        $article->url = $file_name;
-
-        if (Auth::user()->is_admin == 1) {
-            $article->article_type = 1;
-        } else {
-            $article->article_type = 2;
-        }
+        $article->source_id = $request->input('source_id');
+        $article->featured_image = $file_name;
+        $article->url = $request->input('url');
+        $article->article_type = $request->input('article_type');
 
         $article->save();
 
@@ -91,8 +91,8 @@ class ArticleController extends Controller
     {
         //
         $categories = Category::all();
-
-        return view('articles.edit', compact('article', 'categories'));
+        $sources = Source::all();
+        return view('articles.edit', compact('article', 'categories', 'sources'));
     }
 
     /**
@@ -111,9 +111,9 @@ class ArticleController extends Controller
         ]);
 
         if ($request->file('article_featured_image')) {
-            $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();  
+            $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
             $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
-            $article->url = $file_name;
+            $article->featured_image = $file_name;
         }
 
         $article->title = $request->input('article_title');
@@ -121,6 +121,8 @@ class ArticleController extends Controller
         $article->author = $request->input('author');
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
+        $article->source_id = $request->input('source_id');
+        $article->url = $request->input('url');
 
         if (Auth::user()->is_admin == 1) {
             $article->article_type = 1;

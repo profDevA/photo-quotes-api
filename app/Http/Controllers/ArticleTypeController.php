@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\ArticleType;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ArticleTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-        $categories = Category::all();
-        return view('category.index', compact('categories'));
+        $articleTypes = ArticleType::all();
+        return view('articles.types', compact('articleTypes'));
     }
 
     /**
@@ -37,18 +36,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        Category::create($request->all());
+        ArticleType::create($request->all());
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\ArticleType  $articleType
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(ArticleType $articleType)
     {
         //
     }
@@ -56,10 +54,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\ArticleType  $articleType
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(ArticleType $articleType)
     {
         //
     }
@@ -68,10 +66,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\ArticleType  $articleType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, ArticleType $articleType)
     {
         //
     }
@@ -79,12 +77,12 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\ArticleType  $articleType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(ArticleType $articleType)
     {
-        $category->delete();
+        $articleType->delete();
         return back();
     }
 }
