@@ -43,12 +43,14 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
+                                <th>Text</th>
                                 <th>Author</th>
                                 <th>Source</th>
                                 <th>Visible</th>
                                 <th>Category</th>
                                 <th>Article Type</th>
                                 <th>Url</th>
+                                <th>Featured Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -57,12 +59,14 @@
                             <tr>
                                 <td>{{++$key}}</td>
                                 <td>{{$article->title}}</td>
+                                <td>{{$article->text}}</td>
                                 <td>{{$article->author}}</td>
                                 <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
                                 <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
                                 <td>{{$article->category->name ?? ''}}</td>
                                 <td>{{$article->articletype->name ?? ''}}</td>
                                 <td>{{$article->url}}</td>
+                                <td>{{$article->featured_image}}</td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>
                                     <a href="{{ route('articles.edit', $article->id) }}" class="edit-article fa fa-edit"></a>
