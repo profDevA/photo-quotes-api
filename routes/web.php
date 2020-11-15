@@ -24,4 +24,6 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::resource('articles', ArticleController::class);
 
+Route::resource('sources', App\Http\Controllers\SourceController::class);
+
 Route::resource('category', App\Http\Controllers\CategoryController::class);

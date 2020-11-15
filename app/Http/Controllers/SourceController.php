@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-        $categories = Category::all();
-        return view('category.index', compact('categories'));
+        $sources = Source::all();
+        return view('source.index', compact('sources'));
     }
 
     /**
@@ -27,6 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('source.create');
     }
 
     /**
@@ -37,18 +37,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        Category::create($request->all());
-        return redirect()->back();
+        Source::create($request->all());
+        return redirect('sources');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Source $source)
     {
         //
     }
@@ -56,35 +55,37 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Source $source)
     {
-        //
+        return view('source.edit', compact('source'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Source $source)
     {
         //
+        $source->update($request->all());
+        return redirect('sources');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Source  $source
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Source $source)
     {
-        $category->delete();
+        $source->delete();
         return back();
     }
 }
