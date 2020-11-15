@@ -63,6 +63,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>Article Type</label>
+                    <div class="input-group">
+                        <select name="article_type" id="" class="form-control">
+                            @foreach($articlesTypes as $key => $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Visible</label>
                     <div class="form-check">
                         <label class="form-check-label" for="radio1">

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +21,10 @@ Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
 
-Route::resource('articles', ArticleController::class);
+Route::resource('articles', App\Http\Controllers\ArticleController::class);
 
 Route::resource('sources', App\Http\Controllers\SourceController::class);
 
 Route::resource('category', App\Http\Controllers\CategoryController::class);
+
+Route::resource('articleTypes', App\Http\Controllers\ArticleTypeController::class);

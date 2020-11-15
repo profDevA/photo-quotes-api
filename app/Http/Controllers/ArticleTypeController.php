@@ -14,7 +14,8 @@ class ArticleTypeController extends Controller
      */
     public function index()
     {
-        //
+        $articleTypes = ArticleType::all();
+        return view('articles.types', compact('articleTypes'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ArticleTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ArticleType::create($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +82,7 @@ class ArticleTypeController extends Controller
      */
     public function destroy(ArticleType $articleType)
     {
-        //
+        $articleType->delete();
+        return back();
     }
 }

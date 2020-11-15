@@ -60,8 +60,8 @@
                                 <td>{{$article->author}}</td>
                                 <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
                                 <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
-                                <td>{{$article->category->name ?? 'None'}}</td>
-                                <td>{{$article->article_type}}</td>
+                                <td>{{$article->category->name ?? ''}}</td>
+                                <td>{{$article->articletype->name ?? ''}}</td>
                                 <td>{{$article->url}}</td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>

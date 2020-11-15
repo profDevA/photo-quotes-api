@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleType;
 use App\Models\Category;
 use App\Models\Source;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        return view('articles.create', compact('categories', 'sources'));
+        $articlesTypes = ArticleType::all();
+        return view('articles.create', compact('categories', 'sources', 'articlesTypes'));
     }
 
     /**
@@ -61,12 +63,7 @@ class ArticleController extends Controller
         $article->source_id = $request->input('source_id');
         $article->featured_image = $file_name;
         $article->url = $request->input('url');
-
-        if (Auth::user()->is_admin == 1) {
-            $article->article_type = 1;
-        } else {
-            $article->article_type = 2;
-        }
+        $article->article_type = $request->input('article_type');
 
         $article->save();
 

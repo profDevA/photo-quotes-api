@@ -112,7 +112,7 @@
 
 
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link {{ Request::path() ==  'admin' ? 'active' : ''  }}">
+                        <a href="{{route('admin')}}" class="nav-link {{ Request::path() ==  'admin' ? 'active' : ''  }}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -123,17 +123,17 @@
                     @if(Auth::user()->is_admin)
 
                         <li class="nav-item">
-                            <a href="/sources"
+                            <a href="{{route('sources.index')}}"
                                class="nav-link {{ request()->is('sources') || request()->is('sources/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-blog"></i>
                                 <p>
-                                    Source
+                                    Sources
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/articles"
+                            <a href="{{route('articles.index')}}"
                                class="nav-link {{ request()->is('articles') || request()->is('articles/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-blog"></i>
                                 <p>
@@ -143,7 +143,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/category"
+                            <a href="{{route('category.index')}}"
                                class="nav-link {{ request()->is('category') || request()->is('category/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-blog"></i>
                                 <p>
@@ -152,13 +152,12 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item">
-                            <a href="/articles"
-                               class="nav-link {{ request()->is('qutoes') || request()->is('qutoes/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file"></i>
+                            <a href="{{route('articleTypes.index')}}"
+                               class="nav-link {{ request()->is('articleTypes') || request()->is('articleTypes/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-blog"></i>
                                 <p>
-                                    Quotes
+                                    ArticleTypes
                                 </p>
                             </a>
                         </li>
