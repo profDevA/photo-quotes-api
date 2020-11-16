@@ -48,7 +48,7 @@
                     <div class="input-group">
                         <select name="source_id" id="" class="form-control">
                             @foreach($sources as $key => $source)
-                                <option value="{{ $source->id }}" {!! $article->source->id == $source->id ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                                <option value="{{ $source->id }}" {!! ( isset($article->source) && $article->source->id == $source->id ) ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="input-group">
                         <select name="category_id" id="" class="form-control">
                             @foreach($categories as $key => $category)
-                            <option value="{{ $category->id }}" {!! $article->category->id == $category->id ? 'selected':'' !!}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {!! ( isset($article->category) && $article->category->id == $category->id ) ? 'selected':'' !!}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>

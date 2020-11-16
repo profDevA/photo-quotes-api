@@ -133,6 +133,16 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{route('books.index')}}"
+                               class="nav-link {{ request()->is('books') || request()->is('books/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-blog"></i>
+                                <p>
+                                    Books
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{route('articles.index')}}"
                                class="nav-link {{ request()->is('articles') || request()->is('articles/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-blog"></i>

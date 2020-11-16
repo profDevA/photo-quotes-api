@@ -28,3 +28,5 @@ Route::resource('sources', App\Http\Controllers\SourceController::class);
 Route::resource('category', App\Http\Controllers\CategoryController::class);
 
 Route::resource('articleTypes', App\Http\Controllers\ArticleTypeController::class);
+
+Route::resource('books', App\Http\Controllers\BookController::class);
