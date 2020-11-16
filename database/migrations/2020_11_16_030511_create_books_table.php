@@ -16,7 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->dateTime('pubDate')->nullable();
+            $table->date('pubDate')->nullable();
             $table->string('isbn')->nullable();
             $table->string('amazonUrl')->nullable();
             $table->boolean('visible')->default(0);

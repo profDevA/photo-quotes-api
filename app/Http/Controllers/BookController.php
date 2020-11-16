@@ -42,11 +42,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $file_name = 'book' . time().'.'.$request->file('bookImage')->extension();
-        $request->file('bookImage')->move(public_path('uploads'), $file_name);
-
         $request_data = $request->all();
-        $request_data['bookImage'] = $file_name;
+
+        if ($request->file('bookImage')) {
+            $file_name = 'book' . time().'.'.$request->file('bookImage')->extension();
+            $request->file('bookImage')->move(public_path('uploads'), $file_name);
+            $request_data['bookImage'] = $file_name;
+        }
 
         Book::create($request_data);
 
@@ -61,7 +63,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+
     }
 
     /**
@@ -72,7 +74,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $categories = Category::all();
+        $sources = Source::all();
+        $articlesTypes = ArticleType::all();
+        return view('book.edit', compact('book', 'categories', 'sources', 'articlesTypes'));
     }
 
     /**
@@ -84,7 +89,17 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request_data = $request->all();
+
+        if ($request->file('bookImage')) {
+            $file_name = 'book' . time().'.'.$request->file('bookImage')->extension();
+            $request->file('bookImage')->move(public_path('uploads'), $file_name);
+            $request_data['bookImage'] = $file_name;
+        }
+
+        $book->update($request_data);
+
+        return redirect('books');
     }
 
     /**
@@ -95,6 +110,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return back();
     }
 }

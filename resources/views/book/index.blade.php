@@ -74,9 +74,8 @@
                                     <td>{{$book->bookStoreName}}</td>
 
                                     <td>
-                                        <a class="view-article fa fa-eye" href="{{ route('books.show', $book->id) }}"></a>
-                                        <a href="{{ route('articles.edit', $book->id) }}" class="edit-article fa fa-edit"></a>
-                                        <form action="{{ route('articles.destroy', $book->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
+                                        <a href="{{ route('books.edit', $book->id) }}" class="edit-article fa fa-edit"></a>
+                                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" class="delete-article fa fa-trash-alt"></button>
