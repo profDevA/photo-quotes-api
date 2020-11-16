@@ -20,3 +20,11 @@
 .buttons-group .delete-article {
     color: #ffffff;
 }
+
+#articleTable tbody tr td:nth-child(2) {
+    max-width: 200px;
+}
+
+#articleTable tbody tr td:nth-child(3) {
+    max-width: 300px;
+}
