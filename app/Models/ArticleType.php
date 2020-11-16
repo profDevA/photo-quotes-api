@@ -11,5 +11,10 @@ class ArticleType extends Model
         'name',
     ];
 
+    public function article()
+    {
+        return $this->hasMany('App\Models\Article', 'article_type', 'id');
+    }
+
     use HasFactory;
 }

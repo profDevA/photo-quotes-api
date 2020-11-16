@@ -89,7 +89,7 @@
                     <label for="article-featured-image">Featured Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image">
+                            <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image" required>
                             <label class="custom-file-label" for="article-featured-image">Choose file</label>
                         </div>
                     </div>

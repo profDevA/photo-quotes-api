@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
+use App\Models\ArticleType;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -15,10 +16,14 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        
         $articles = Article::paginate(10);
-
+  
         return response()->json($articles);
+        // $articletype = ArticleType::where('name', "Blog")->with('article')->get();
+
+        // $articles = $articletype[0]->article;
+
+        // return view('articles.index', compact('articles'));
     }
 
     /**
@@ -86,5 +91,14 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+    
+    public function get_all_blogs()
+    {
+        $articletype = ArticleType::where('name', "Article")->with('article')->get();
+
+        $articles = $articletype[0]->article;
+
+        return view('articles.index', compact('articles'));
     }
 }
