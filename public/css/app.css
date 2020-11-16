@@ -10924,19 +10924,11 @@ a.text-dark:focus {
 
 #articleTable tbody tr td:nth-child(2) {
   max-width: 200px;
-  display: -webkit-box;
   overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 #articleTable tbody tr td:nth-child(3) {
   max-width: 300px;
-  display: -webkit-box;
   overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
