@@ -59,18 +59,10 @@
                             <tr>
                                 <td>{{++$key}}</td>
                                 <td>
-                                    @if (strlen($article->title) > 60)
-                                        {{substr($article->title, 0, 60) . '...'}}
-                                    @else
-                                        {{$article->title}}
-                                    @endif
+                                    {{$article->title}}
                                 </td>
                                 <td>
-                                    @if (strlen($article->text) > 120)
-                                        {{substr($article->text, 0, 120) . '...'}}
-                                    @else
-                                        {{$article->text}}
-                                    @endif
+                                    {{$article->text}}
                                 </td>
                                 <td>{{$article->author}}</td>
                                 <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
