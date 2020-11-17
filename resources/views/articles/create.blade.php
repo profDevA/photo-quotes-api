@@ -94,6 +94,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="meta_title">Meta Title</label>
+                    <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title">
+                </div>
+                <div class="form-group">
+                    <label for="meta_description">Meta Description</label>
+                    <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description">
+                </div>
                 <div class="">
                     <button type="submit" class="btn btn-primary float-right mr-4">Submit</button>
                 </div>

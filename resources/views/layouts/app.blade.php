@@ -118,9 +118,19 @@
                     @if(Auth::user()->is_admin)
 
                         <li class="nav-item">
+                            <a href="{{route('quotes.index')}}"
+                               class="nav-link {{ request()->is('quotes') || request()->is('quotes/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-quote-right"></i>
+                                <p>
+                                    Quotes
+                                </p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
                             <a href="{{route('sources.index')}}"
                                class="nav-link {{ request()->is('sources') || request()->is('sources/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-blog"></i>
+                                <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Sources
                                 </p>
@@ -130,7 +140,7 @@
                         <li class="nav-item">
                             <a href="{{route('books.index')}}"
                                class="nav-link {{ request()->is('books') || request()->is('books/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-blog"></i>
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Books
                                 </p>
@@ -150,7 +160,7 @@
                         <li class="nav-item">
                             <a href="{{route('category.index')}}"
                                class="nav-link {{ request()->is('category') || request()->is('category/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-blog"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     Category
                                 </p>
@@ -160,7 +170,7 @@
                         <li class="nav-item">
                             <a href="{{route('articleTypes.index')}}"
                                class="nav-link {{ request()->is('articleTypes') || request()->is('articleTypes/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-blog"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     ArticleTypes
                                 </p>

@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
 
+Route::resource('quotes', App\Http\Controllers\QuoteController::class);
+
 Route::resource('articles', App\Http\Controllers\ArticleController::class);
 
 Route::resource('sources', App\Http\Controllers\SourceController::class);

@@ -64,6 +64,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>Article Type</label>
+                    <div class="input-group">
+                        <select name="article_type" id="" class="form-control">
+                            @foreach($articlesTypes as $key => $type)
+                                <option value="{{ $type->id }}" {!! ( isset($article->article_type) && $article->articletype->id == $type->id ) ? 'selected':'' !!}>{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Visible</label>
                     <div class="form-check">
                         <label class="form-check-label" for="radio1">
@@ -87,6 +97,14 @@
                             <span class="input-group-text" id="">Upload</span>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="meta_title">Meta Title</label>
+                    <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{$article->meta_title}}">
+                </div>
+                <div class="form-group">
+                    <label for="meta_description">Meta Description</label>
+                    <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{$article->meta_description}}">
                 </div>
                 <div class="">
                     <button type="submit" class="btn btn-primary float-right mr-4">Submit</button>

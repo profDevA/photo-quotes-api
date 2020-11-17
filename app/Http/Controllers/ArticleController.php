@@ -68,7 +68,6 @@ class ArticleController extends Controller
             }
         }
 
-
         $request->file('article_featured_image')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
 
         $article = new Article;
@@ -80,6 +79,8 @@ class ArticleController extends Controller
         $article->source_id = $request->input('source_id');
         $article->featured_image = $new_file_name . '.' . $file_ext;
         $article->url = $request->input('url');
+        $article->meta_title = $request->input('meta_title') != '' ? $request->input('meta_title') : $request->input('article_title');
+        $article->meta_description = $request->input('meta_description');
         $article->article_type = $request->input('article_type');
         $article->slug = Str::slug($request->input('article_title'), '-');
 
@@ -111,7 +112,8 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        return view('articles.edit', compact('article', 'categories', 'sources'));
+        $articlesTypes = ArticleType::all();
+        return view('articles.edit', compact('article', 'categories', 'sources', 'articlesTypes'));
     }
 
     /**
@@ -142,12 +144,10 @@ class ArticleController extends Controller
         $article->category_id = $request->input('category_id');
         $article->source_id = $request->input('source_id');
         $article->url = $request->input('url');
-
-        if (Auth::user()->is_admin == 1) {
-            $article->article_type = 1;
-        } else {
-            $article->article_type = 2;
-        }
+        $article->meta_title = $request->input('meta_title') != '' ? $request->input('meta_title') : $request->input('article_title');
+        $article->meta_description = $request->input('meta_description');
+        $article->slug = Str::slug($request->input('article_title'), '-');
+        $article->article_type = $request->input('article_type');
 
         $article->save();
 

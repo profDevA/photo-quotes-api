@@ -50,6 +50,8 @@
                                 <th>Category</th>
                                 <th>Article Type</th>
                                 <th>Url</th>
+                                <th>Meta Title</th>
+                                <th>Meta Description</th>
                                 <th>Featured Image</th>
                                 <th>Action</th>
                             </tr>
@@ -78,6 +80,8 @@
                                 <td>{{$article->category->name ?? ''}}</td>
                                 <td>{{$article->articletype->name ?? ''}}</td>
                                 <td>{{$article->url}}</td>
+                                <td>{{$article->meta_title}}</td>
+                                <td>{{$article->meta_description}}</td>
                                 <td>{{$article->featured_image}}</td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->slug) }}"></a>

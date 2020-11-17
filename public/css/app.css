@@ -10922,6 +10922,17 @@ a.text-dark:focus {
   color: #ffffff;
 }
 
+#articleTable tbody tr th {
+  padding: 0.25rem;
+}
+
+#articleTable tbody tr td {
+  max-width: 200px;
+  padding: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #articleTable tbody tr td:nth-child(2) {
   max-width: 200px;
   overflow: hidden;
@@ -10930,5 +10941,34 @@ a.text-dark:focus {
 #articleTable tbody tr td:nth-child(3) {
   max-width: 300px;
   overflow: hidden;
+}
+
+#articleTable tbody tr td:last-child {
+  min-width: 50px;
+  text-align: center;
+}
+
+#articleTable tbody tr td:last-child button {
+  padding: 0;
+}
+
+#quotetable thead th {
+  vertical-align: middle;
+}
+
+#quotetable thead .sorting::before,
+#quotetable thead .sorting::after,
+#quotetable thead .sorting_asc::before,
+#quotetable thead .sorting_asc::after,
+#quotetable thead .sorting_desc::before,
+#quotetable thead .sorting_desc::after,
+#quotetable thead .sorting_asc_disabled::before,
+#quotetable thead .sorting_asc_disabled::after,
+#quotetable thead .sorting_desc_disabled::before,
+#quotetable thead .sorting_desc_disabled::after {
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
 }
 
