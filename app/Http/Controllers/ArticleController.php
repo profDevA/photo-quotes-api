@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -51,8 +52,23 @@ class ArticleController extends Controller
             'article_featured_image' => 'required',
         ]);
 
-        $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
-        $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
+        // $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
+        $file_full_name = $request->file('article_featured_image')->getClientOriginalName();
+        $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
+        $file_ext = $request->file('article_featured_image')->getClientOriginalExtension();
+        
+        
+        $new_file_name = $file_name;
+        if (file_exists(public_path('uploads\\') . $file_full_name)) {
+            $i = 1;
+            while (file_exists(public_path('uploads\\') . $new_file_name . "." . $file_ext)) {
+                $new_file_name = $file_name . "($i)";
+                $i++;
+            }
+        }
+
+        
+        $request->file('article_featured_image')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
 
         $article = new Article;
         $article->title = $request->input('article_title');
@@ -61,7 +77,7 @@ class ArticleController extends Controller
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
         $article->source_id = $request->input('source_id');
-        $article->featured_image = $file_name;
+        $article->featured_image = $new_file_name . '.' . $file_ext;
         $article->url = $request->input('url');
         $article->article_type = $request->input('article_type');
 
@@ -111,7 +127,7 @@ class ArticleController extends Controller
         ]);
 
         if ($request->file('article_featured_image')) {
-            $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
+            $file_name = 'article' . time() . '.' . $request->file('article_featured_image')->extension();
             $request->file('article_featured_image')->move(public_path('uploads'), $file_name);
             $article->featured_image = $file_name;
         }
