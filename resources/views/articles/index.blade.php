@@ -80,7 +80,7 @@
                                 <td>{{$article->url}}</td>
                                 <td>{{$article->featured_image}}</td>
                                 <td>
-                                    <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->id) }}"></a>
+                                    <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->slug) }}"></a>
                                     <a href="{{ route('articles.edit', $article->id) }}" class="edit-article fa fa-edit"></a>
                                     <form action="{{ route('articles.destroy', $article->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">

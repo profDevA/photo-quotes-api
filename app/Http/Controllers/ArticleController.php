@@ -9,6 +9,7 @@ use App\Models\Source;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -56,8 +57,8 @@ class ArticleController extends Controller
         $file_full_name = $request->file('article_featured_image')->getClientOriginalName();
         $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
         $file_ext = $request->file('article_featured_image')->getClientOriginalExtension();
-        
-        
+
+
         $new_file_name = $file_name;
         if (file_exists(public_path('uploads\\') . $file_full_name)) {
             $i = 1;
@@ -67,7 +68,7 @@ class ArticleController extends Controller
             }
         }
 
-        
+
         $request->file('article_featured_image')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
 
         $article = new Article;
@@ -80,6 +81,7 @@ class ArticleController extends Controller
         $article->featured_image = $new_file_name . '.' . $file_ext;
         $article->url = $request->input('url');
         $article->article_type = $request->input('article_type');
+        $article->slug = Str::slug($request->input('article_title'), '-');
 
         $article->save();
 
@@ -92,8 +94,9 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($slug)
     {
+        $article = Article::where('slug', $slug)->first();
         return view('articles.show', compact('article'));
     }
 
