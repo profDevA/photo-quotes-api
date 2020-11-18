@@ -27,6 +27,25 @@
             <form action="{{ route('quotes.update', $quote->id)}}" method="post" enctype="multipart/form-data" class="row">
                 @csrf
                 @method('PUT')
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quote_source">Source</label>
+                        <select name="sourceId" id="quote_source" class="form-control">
+                            @foreach($sources as $key=>$source)
+                            <option value="{{$source->id}}" {!! ( isset($quote->source) && $quote->source->id == $source->id ) ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quote_source_name">Source Name</label>
+                        <input type="text" class="form-control" id="quote_source_name" name="sourceName" placeholder="Source Name" value="{{ $quote->sourceName }}">
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="quote_text">Quote</label>
@@ -45,20 +64,6 @@
                     <div class="form-group">
                         <label for="quote_hidden_comment">Hidden Comments</label>
                         <textarea name="hiddenComments" id="quote_hidden_comment" cols="10" rows="5" class="form-control">{{ $quote->hiddenComments }}</textarea>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="quote_data_added">Date added</label>
-                        <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ $quote->dataAdded }}">
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="quote_of_the_day">Quote of the day</label>
-                        <input type="text" class="form-control" id="quote_of_the_day" name="quoteOfTheDay" placeholder="Quote of the day" value="{{ $quote->quoteOfTheDay }}">
                     </div>
                 </div>
 
@@ -85,6 +90,25 @@
                         <label for="quote_reference_id_4">referenceId 4</label>
                         <input type="number" class="form-control" id="quote_reference_id_4" name="referenceId4" placeholder="referenceId" value="{{ $quote->referenceId4 }}">
                     </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quote_data_added">Date added</label>
+                        <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ $quote->dataAdded }}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label for="quote_of_the_day">Quote of the day</label>
+                            <div class="input-group">
+                                <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
+                                    <option value="1" {!! $quote->quoteOfTheDay == 1 ? 'selected' : '' !!}>Yes</option>
+                                    <option value="0" {!! $quote->quoteOfTheDay == 0 ? 'selected' : '' !!}>No</option>
+                                </select>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="col-md-4">
@@ -114,31 +138,6 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="quote_source">Source</label>
-                        <select name="sourceId" id="quote_source" class="form-control">
-                            @foreach($sources as $key=>$source)
-                            <option value="{{$source->id}}" {!! ( isset($quote->source) && $quote->source->id == $source->id ) ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="quote_source_name">Source Name</label>
-                        <input type="text" class="form-control" id="quote_source_name" name="sourceName" placeholder="Source Name" value="{{ $quote->sourceName }}">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="quote_ip_address">IP Address</label>
-                        <input type="text" class="form-control" id="quote_ip_address" name="IPAddress" placeholder="IP Address" value="{{ $quote->IPAddress }}">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
                         <label for="quote_add_by_user">Add by User</label>
                         <input type="text" class="form-control" id="quote_add_by_user" name="addedByUser" placeholder="Add by User" value="{{ $quote->addedByUser }}">
                     </div>
@@ -151,12 +150,17 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="quote_type">Quote Type</label>
-                        <input type="text" class="form-control" id="quote_type" name="quoteType" placeholder="Quote Type" value="{{ $quote->quoteType }}">
+                 <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="quote_type">Quote Type</label>
+                            <div class="input-group">
+                                <select name="quoteType" id="quote_type" class="form-control">
+                                    <option value="1" {!! $quote->quoteType == 1 ? 'selected' : '' !!}>Q</option>
+                                    <option value="0" {!! $quote->quoteType == 0 ? 'selected' : '' !!}>N</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -205,21 +209,6 @@
                     <div class="form-group">
                         <label for="quote_new_date">New Date</label>
                         <input type="date" class="form-control" id="quote_new_date" name="newDate" value="{{ $quote->newDate }}">
-                    </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="rss_feed_type">RSS Feed Type</label>
-                        <input type="text" name="rssFeedType" id="rss_feed_type" class="form-control" placeholder="RSS Feed Type" required value="{{ $quote->rssFeedType }}">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="admidn_rss_feed_type">Admin RSS Feed Type</label>
-                        <input type="text" name="adminRssFeedType" id="admidn_rss_feed_type" class="form-control" placeholder="Admin RSS Feed Type" required value="{{ $quote->adminRssFeedType }}">
                     </div>
                 </div>
 

@@ -26,10 +26,29 @@
             <div class="container-fluid">
                 <form action="{{ route('quotes.store')}}" method="post" enctype="multipart/form-data" class="row">
                     @csrf
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="quote_source">Source</label>
+                            <select name="sourceId" id="quote_source" class="form-control">
+                                @foreach($sources as $key=>$source)
+                                    <option value="{{$source->id}}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="quote_source_name">Source Name</label>
+                            <input type="text" class="form-control" id="quote_source_name" name="sourceName" placeholder="Source Name">
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="quote_text">Quote</label>
-                            <textarea class="form-control" id="quote_text" name="quote" placeholder="Enter quote .." rows="4" required></textarea>
+                            <textarea class="form-control" id="quote_text" name="quote" placeholder="Enter quote .." rows="7" required></textarea>
                         </div>
                     </div>
 
@@ -44,20 +63,6 @@
                         <div class="form-group">
                             <label for="quote_hidden_comment">Hidden Comments</label>
                             <textarea name="hiddenComments" id="quote_hidden_comment" cols="10" rows="5" class="form-control"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="quote_data_added">Date added</label>
-                            <input type="date" class="form-control" id="quote_data_added" name="dataAdded">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="quote_of_the_day">Quote of the day</label>
-                            <input type="text" class="form-control" id="quote_of_the_day" name="quoteOfTheDay" placeholder="Quote of the day">
                         </div>
                     </div>
 
@@ -88,6 +93,25 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label for="quote_data_added">Data added</label>
+                            <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ date('Y-m-d') }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="quote_of_the_day">Quote of the day</label>
+                            <div class="input-group">
+                                <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label for="quote_book_id">Quote Book</label>
                             <select name="bookId" id="quote_book_id" class="form-control">
                                 @foreach($books as $key=>$book)
@@ -111,31 +135,8 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="quote_source">Source</label>
-                            <select name="sourceId" id="quote_source" class="form-control">
-                                @foreach($sources as $key=>$source)
-                                    <option value="{{$source->id}}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="quote_source_name">Source Name</label>
-                            <input type="text" class="form-control" id="quote_source_name" name="sourceName" placeholder="Source Name">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="quote_ip_address">IP Address</label>
-                            <input type="text" class="form-control" id="quote_ip_address" name="IPAddress" placeholder="IP Address">
-                        </div>
-                    </div>
                     
+            
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="quote_add_by_user">Add by User</label>
@@ -153,7 +154,12 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="quote_type">Quote Type</label>
-                            <input type="text" class="form-control" id="quote_type" name="quoteType" placeholder="Quote Type">
+                            <div class="input-group">
+                                <select name="quoteType" id="quote_type" class="form-control">
+                                    <option value="1">Q</option>
+                                    <option value="0">N</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -204,21 +210,6 @@
                         <div class="form-group">
                             <label for="quote_new_date">New Date</label>
                             <input type="date" class="form-control" id="quote_new_date" name="newDate">
-                        </div>
-                    </div>
-
-                 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="rss_feed_type">RSS Feed Type</label>
-                            <input type="text" name="rssFeedType" id="rss_feed_type" class="form-control" placeholder="RSS Feed Type" required>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="admidn_rss_feed_type">Admin RSS Feed Type</label>
-                            <input type="text" name="adminRssFeedType" id="admidn_rss_feed_type" class="form-control" placeholder="Admin RSS Feed Type" required>
                         </div>
                     </div>
 

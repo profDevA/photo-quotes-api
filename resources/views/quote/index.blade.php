@@ -55,8 +55,7 @@
                                 <th>bookid</th>
                                 <th>Sender Email</th>
                                 <th>Sender Name</th>
-                                <th>source id</th>
-                                <th>source name</th>
+                                <th>Source Name</th>
                                 <th>IP Adress</th>
                                 <th>Added By User</th>
                                 <th>Original Quote</th>
@@ -66,8 +65,6 @@
                                 <th>page</th>
                                 <th>Quote Count Visible</th>
                                 <th>New Date</th>
-                                <th>Rss Feed Type</th>
-                                <th>admin Rss feed Type</th>
                                 <th>is Edited</th>
                                 <th>Rating</th>
                                 <th>is_english</th>
@@ -83,18 +80,16 @@
                                     <td>{{$quote->visibleComments}}</td>
                                     <td>{{$quote->hiddenComments}}</td>
                                     <td>{{$quote->visible == 1 ? "Yes" : "No"}}</td>
-                                    <!-- <td>{{$quote->source->lastName ?? ''}} {{$quote->source->middleName ?? ''}} {{$quote->source->firstName ?? ''}}</td> -->
                                     <td>{{$quote->dataAdded ?? ''}}</td>
                                     <td>{{$quote->referenceId1}}</td>
                                     <td>{{$quote->referenceId2}}</td>
                                     <td>{{$quote->referenceId3}}</td>
                                     <td>{{$quote->referenceId4}}</td>
                                     <td>{{$quote->quoteOfTheDay}}</td>
-                                    <td>{{$quote->bookId}}</td>
+                                    <td>{{$quote->book ? $quote->book->title : ''}}</td>
                                     <td>{{$quote->senderEmail}}</td>
                                     <td>{{$quote->senderName}}</td>
-                                    <td>{{$quote->sourceId}}</td>
-                                    <td>{{$quote->sourceName}}</td>
+                                    <td>{{$quote->source ? $quote->source->lastName.' '.$quote->source->middleName.' '.$quote->source->firstName : $quote->sourceName}}</td>
                                     <td>{{$quote->IPAddress}}</td>
                                     <td>{{$quote->addedByUser}}</td>
                                     <td>{{$quote->originalQuote}}</td>
@@ -104,8 +99,6 @@
                                     <td>{{$quote->page}}</td>
                                     <td>{{$quote->quoteCountVisible == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->newDate}}</td>
-                                    <td>{{$quote->rssFeedType}}</td>
-                                    <td>{{$quote->adminRssFeedType}}</td>
                                     <td>{{$quote->isEdited == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->rating}}</td>
                                     <td>{{$quote->isEnglish == 1 ? "Yes" : "No"}}</td>

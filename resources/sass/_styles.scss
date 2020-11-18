@@ -65,16 +65,36 @@
             vertical-align: middle;
         }
 
-        .sorting, 
+        td {
+            max-width: 200px;
+            padding: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:nth-child(2) {
+                max-width: 300px;
+                overflow: hidden;
+            }
+
+            &:last-child {
+                min-width: 50px;
+                text-align: center;
+
+                button {
+                    padding: 0;
+                }
+            }
+        }
+
+        .sorting,
         .sorting_asc,
         .sorting_desc,
         .sorting_asc_disabled,
-        .sorting_desc_disabled
-        {
-            &::before, 
+        .sorting_desc_disabled {
+            &::before,
             &::after {
                 top: 50%;
-                transform: translateY(-50%); 
+                transform: translateY(-50%);
                 display: flex;
                 align-items: center;
             }

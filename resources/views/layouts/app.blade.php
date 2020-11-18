@@ -158,11 +158,21 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{route('tags.index')}}"
+                               class="nav-link {{ request()->is('tags') || request()->is('tags/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-tag"></i>
+                                <p>
+                                    Tags
+                                </p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
                             <a href="{{route('category.index')}}"
                                class="nav-link {{ request()->is('category') || request()->is('category/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
-                                    Category
+                                    Categorys
                                 </p>
                             </a>
                         </li>

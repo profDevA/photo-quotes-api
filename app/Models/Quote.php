@@ -15,11 +15,11 @@ class Quote extends Model
 
     public function source()
     {
-        return $this->belongsTo('App\Models\Source');
+        return $this->belongsTo('App\Models\Source', 'sourceId', 'id');
     }
 
     public function book()
     {
-        return $this->belongsTo('App\Models\Book');
+        return $this->belongsTo('App\Models\Book', 'bookId', 'id');
     }
 }
