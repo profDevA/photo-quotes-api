@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Quote;
 use App\Models\Source;
 use App\Models\Book;
+use App\Models\Tag;
+use App\Models\TagQuote;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
@@ -41,7 +43,28 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-        Quote::create($request->all());
+        $quote_data = $request->all();
+        unset($quote_data['tags']);
+        
+        $tags_arr = array_map('trim', explode(',', $request->post('tags')));
+
+        $quote = Quote::create($quote_data);
+
+        foreach ($tags_arr as $key => $tag_name) {
+            $tag = Tag::where('name', '=', $tag_name)->first();
+
+            if ($tag === null) {
+                $tag = new Tag;
+                $tag->name = $tag_name;
+                $tag->save();
+            }
+
+            $tag_quote = new TagQuote;
+
+            $tag_quote->tagId = $tag->id;
+            $tag_quote->quoteId = $quote->id;
+            $tag_quote->save();
+        }
 
         return redirect('quotes');
     }
@@ -67,6 +90,9 @@ class QuoteController extends Controller
     {
         $books = Book::all();
         $sources = Source::all();
+        $tags = Tag::where('quoteId', '=', $quote->id)->get('name');
+
+        dump($tags); exit;
         return view('quote.edit', compact('quote', 'books', 'sources'));
     }
 

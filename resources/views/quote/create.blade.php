@@ -135,8 +135,6 @@
                         </div>
                     </div>
 
-                    
-            
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="quote_add_by_user">Add by User</label>
@@ -241,6 +239,13 @@
                                     <option value="0">No</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="tag_quote">Tags</label>
+                            <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma">
                         </div>
                     </div>
 

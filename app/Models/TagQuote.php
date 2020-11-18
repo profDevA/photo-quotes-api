@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TagQuote extends Model
 {
     use HasFactory;
+
+    public function tag()
+    {
+        return $this->hasMany('App\Models\Tag', 'tagId', 'id');
+    }
 }
