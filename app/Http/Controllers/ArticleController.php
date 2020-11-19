@@ -53,7 +53,6 @@ class ArticleController extends Controller
             'article_featured_image' => 'required',
         ]);
 
-        // $file_name = 'article' . time().'.'.$request->file('article_featured_image')->extension();
         $file_full_name = $request->file('article_featured_image')->getClientOriginalName();
         $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
         $file_ext = $request->file('article_featured_image')->getClientOriginalExtension();
@@ -75,7 +74,7 @@ class ArticleController extends Controller
         $dom->loadHtml($request->input('article_content'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
 
-        foreach ($images as $k => $img) {
+        foreach ($images as $img) {
 
             $data = $img->getAttribute('src');
             $image_full_name = $img->getAttribute('data-filename');
@@ -177,7 +176,7 @@ class ArticleController extends Controller
         $dom->loadHtml($request->input('article_content'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
 
-        foreach ($images as $k => $img) {
+        foreach ($images as $img) {
 
             $data = $img->getAttribute('src');
 

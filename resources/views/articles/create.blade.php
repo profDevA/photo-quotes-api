@@ -46,6 +46,7 @@
                     <label>Source</label>
                     <div class="input-group">
                         <select name="source_id" id="" class="form-control">
+                            <option value="0">Select Source</option>
                             @foreach($sources as $key => $source)
                                 <option value="{{ $source->id }}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
                             @endforeach
