@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Source;
+use App\Models\Quote;
+use App\Models\Book;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class SourceController extends Controller
@@ -50,6 +53,12 @@ class SourceController extends Controller
     public function show($slug)
     {
         $source = Source::where('slug', $slug)->first();
+        $quotes = Quote::where('sourceId', $source['id'])->get();
+        $books = Book::where('source_id', $source['id'])->get();
+        $articles = Article::where('source_id', $source['id'])->get();
+        $source['Quotes'] = $quotes;
+        $source['Books'] = $books;
+        $source['Articles'] = $articles;
 
         return response()->json($source);
     }
