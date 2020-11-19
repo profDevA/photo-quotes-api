@@ -57,7 +57,7 @@
                             @foreach($sources as $key=>$source)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td>{{$source->firstName.', '.$source->middleName.', '.$source->lastName}}</td>
+                                    <td>{{$source->firstName.' '.$source->middleName.' '.$source->lastName}}</td>
                                     <td>{{$source->sourceName}}</td>
                                     <td>{{$source->quoteTitle}}</td>
                                     <td>{{$source->metatag}}</td>
