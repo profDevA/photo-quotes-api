@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Source;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
 
 class SourceController extends Controller
 {
@@ -17,7 +15,7 @@ class SourceController extends Controller
     public function index()
     {
         $sources = Source::all();
-        return view('source.index', compact('sources'));
+        return response()->json($sources);
     }
 
     /**
@@ -28,7 +26,7 @@ class SourceController extends Controller
     public function create()
     {
         //
-        return view('source.create');
+      
     }
 
     /**
@@ -39,13 +37,8 @@ class SourceController extends Controller
      */
     public function store(Request $request)
     {
-        $source_data = $request->all();
-        $full_name = $request->input('firstName') . ' ' . $request->input('middleName') . ' ' . $request->input('lastName'); 
-        $source_data['slug'] = Str::slug($full_name, '-');
-
-        Source::create($source_data);
-
-        return redirect('sources');
+        // Source::create($request->all());
+        // return redirect('sources');
     }
 
     /**
@@ -56,7 +49,9 @@ class SourceController extends Controller
      */
     public function show($slug)
     {
-        
+        $source = Source::where('slug', $slug)->first();
+
+        return response()->json($source);
     }
 
     /**
@@ -67,7 +62,7 @@ class SourceController extends Controller
      */
     public function edit(Source $source)
     {
-        return view('source.edit', compact('source'));
+        // return view('source.edit', compact('source'));
     }
 
     /**
@@ -80,8 +75,8 @@ class SourceController extends Controller
     public function update(Request $request, Source $source)
     {
         //
-        $source->update($request->all());
-        return redirect('sources');
+        // $source->update($request->all());
+        // return redirect('sources');
     }
 
     /**
@@ -92,7 +87,6 @@ class SourceController extends Controller
      */
     public function destroy(Source $source)
     {
-        $source->delete();
-        return back();
+ 
     }
 }
