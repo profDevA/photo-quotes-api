@@ -28,11 +28,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="article-title">Title</label>
-                    <input type="text" class="form-control" id="article-title" name="article_title" placeholder="Please Enter title">
+                    <input type="text" class="form-control" id="article-title" name="article_title" placeholder="Please Enter title" required>
                 </div>
                 <div class="form-group">
                     <label for="article-content">Text</label>
-                    <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="article_url">Url</label>
@@ -94,14 +94,17 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="meta_title">Meta Title</label>
                     <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title">
                 </div>
+                
                 <div class="form-group">
                     <label for="meta_description">Meta Description</label>
                     <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description">
                 </div>
+                
                 <div class="">
                     <button type="submit" class="btn btn-primary float-right mr-4">Submit</button>
                 </div>
@@ -115,10 +118,26 @@
 
 @section('scripts')
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script src="{{asset('plugins/summernote-image-attribute/summernote-image-attributes.js')}}"></script>
 <script>
     $(function() {
         // Summernote
-        $('.textarea').summernote()
+        $('.textarea').summernote({
+        popover: {
+            image: [
+                ['custom', ['imageAttributes']],
+                ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                ['remove', ['removeMedia']]
+            ],
+        },
+        lang: 'en-US', // Change to your chosen language
+        imageAttributes:{
+            icon:'<i class="note-icon-pencil"/>',
+            removeEmpty:true, // true = remove attributes | false = leave empty if present
+            disableUpload: true // true = don't display Upload Options | Display Upload Options
+        }
+    })
         // File input
         bsCustomFileInput.init();
     })

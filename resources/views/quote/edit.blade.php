@@ -101,14 +101,14 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                            <label for="quote_of_the_day">Quote of the day</label>
-                            <div class="input-group">
-                                <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
-                                    <option value="1" {!! $quote->quoteOfTheDay == 1 ? 'selected' : '' !!}>Yes</option>
-                                    <option value="0" {!! $quote->quoteOfTheDay == 0 ? 'selected' : '' !!}>No</option>
-                                </select>
-                            </div>
+                        <label for="quote_of_the_day">Quote of the day</label>
+                        <div class="input-group">
+                            <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
+                                <option value="1" {!! $quote->quoteOfTheDay == 1 ? 'selected' : '' !!}>Yes</option>
+                                <option value="0" {!! $quote->quoteOfTheDay == 0 ? 'selected' : '' !!}>No</option>
+                            </select>
                         </div>
+                    </div>
                 </div>
 
                 <div class="col-md-4">
@@ -150,17 +150,17 @@
                     </div>
                 </div>
 
-                 <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="quote_type">Quote Type</label>
-                            <div class="input-group">
-                                <select name="quoteType" id="quote_type" class="form-control">
-                                    <option value="1" {!! $quote->quoteType == 1 ? 'selected' : '' !!}>Q</option>
-                                    <option value="0" {!! $quote->quoteType == 0 ? 'selected' : '' !!}>N</option>
-                                </select>
-                            </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="quote_type">Quote Type</label>
+                        <div class="input-group">
+                            <select name="quoteType" id="quote_type" class="form-control">
+                                <option value="1" {!! $quote->quoteType == 1 ? 'selected' : '' !!}>Q</option>
+                                <option value="0" {!! $quote->quoteType == 0 ? 'selected' : '' !!}>N</option>
+                            </select>
                         </div>
                     </div>
+                </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -240,6 +240,13 @@
                                 <option value="0" {!! $quote->isEnglish == 0 ? 'selected' : '' !!}>No</option>
                             </select>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="tag_quote">Tags</label>
+                        <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma" value="{{ $quote->tags }}">
                     </div>
                 </div>
 

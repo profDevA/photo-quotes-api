@@ -65,27 +65,6 @@
             vertical-align: middle;
         }
 
-        td {
-            max-width: 200px;
-            padding: 0.25rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
-            &:nth-child(2) {
-                max-width: 300px;
-                overflow: hidden;
-            }
-
-            &:last-child {
-                min-width: 50px;
-                text-align: center;
-
-                button {
-                    padding: 0;
-                }
-            }
-        }
-
         .sorting,
         .sorting_asc,
         .sorting_desc,
@@ -97,6 +76,29 @@
                 transform: translateY(-50%);
                 display: flex;
                 align-items: center;
+            }
+        }
+    }
+
+    tbody {
+        td {
+            max-width: 200px;
+            padding: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:nth-child(3) {
+                max-width: 300px;
+                overflow: hidden;
+            }
+
+            &:last-child {
+                min-width: 50px;
+                text-align: center;
+
+                button {
+                    padding: 0;
+                }
             }
         }
     }

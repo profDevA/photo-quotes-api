@@ -10956,27 +10956,6 @@ a.text-dark:focus {
   vertical-align: middle;
 }
 
-#quotetable thead td {
-  max-width: 200px;
-  padding: 0.25rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#quotetable thead td:nth-child(2) {
-  max-width: 300px;
-  overflow: hidden;
-}
-
-#quotetable thead td:last-child {
-  min-width: 50px;
-  text-align: center;
-}
-
-#quotetable thead td:last-child button {
-  padding: 0;
-}
-
 #quotetable thead .sorting::before,
 #quotetable thead .sorting::after,
 #quotetable thead .sorting_asc::before,
@@ -10991,5 +10970,26 @@ a.text-dark:focus {
   transform: translateY(-50%);
   display: flex;
   align-items: center;
+}
+
+#quotetable tbody td {
+  max-width: 200px;
+  padding: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#quotetable tbody td:nth-child(3) {
+  max-width: 300px;
+  overflow: hidden;
+}
+
+#quotetable tbody td:last-child {
+  min-width: 50px;
+  text-align: center;
+}
+
+#quotetable tbody td:last-child button {
+  padding: 0;
 }
 

@@ -70,9 +70,44 @@ class ArticleController extends Controller
 
         $request->file('article_featured_image')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
 
+        // Summernote dom treatment
+        $dom = new \DOMDocument();
+        $dom->loadHtml($request->input('article_content'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $k => $img) {
+
+            $data = $img->getAttribute('src');
+            $image_full_name = $img->getAttribute('data-filename');
+            $snot_image_name = explode('.', $image_full_name)[0];
+            $snot_image_ext = explode('.', $image_full_name)[1];
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+
+            $data = base64_decode($data);
+
+            $new_snot_image_name = $snot_image_name;
+
+            if (file_exists(public_path('uploads\\') . $image_full_name)) {
+                $i = 1;
+                while (file_exists(public_path('uploads\\') . $new_snot_image_name . "." . $snot_image_ext)) {
+                    $new_snot_image_name = $snot_image_name . "($i)";
+                    $i++;
+                }
+            }
+
+            $image_name = "/uploads/" . $new_snot_image_name . '.' . $snot_image_ext;
+            $path = public_path() . $image_name;
+            file_put_contents($path, $data);
+            $img->removeAttribute('src');
+            $img->removeAttribute('data-filename');
+            $img->setAttribute('src', $image_name);
+        }
+
         $article = new Article;
         $article->title = $request->input('article_title');
-        $article->text = $request->input('article_content');
+        $article->text = $dom->saveHTML();
         $article->author = $request->input('author');
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
@@ -137,8 +172,46 @@ class ArticleController extends Controller
             $article->featured_image = $file_name;
         }
 
+        // Summernote dom treatment
+        $dom = new \DOMDocument();
+        $dom->loadHtml($request->input('article_content'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $k => $img) {
+
+            $data = $img->getAttribute('src');
+
+            if (preg_match('/data:image/', $data)) {
+                $image_full_name = $img->getAttribute('data-filename');
+                $snot_image_name = explode('.', $image_full_name)[0];
+                $snot_image_ext = explode('.', $image_full_name)[1];
+    
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+    
+                $data = base64_decode($data);
+    
+                $new_snot_image_name = $snot_image_name;
+    
+                if (file_exists(public_path('uploads\\') . $image_full_name)) {
+                    $i = 1;
+                    while (file_exists(public_path('uploads\\') . $new_snot_image_name . "." . $snot_image_ext)) {
+                        $new_snot_image_name = $snot_image_name . "($i)";
+                        $i++;
+                    }
+                }
+    
+                $image_name = "/uploads/" . $new_snot_image_name . '.' . $snot_image_ext;
+                $path = public_path() . $image_name;
+                file_put_contents($path, $data);
+                $img->removeAttribute('src');
+                $img->removeAttribute('data-filename');
+                $img->setAttribute('src', $image_name);
+            }
+        }
+
         $article->title = $request->input('article_title');
-        $article->text = $request->input('article_content');
+        $article->text = $dom->saveHTML();
         $article->author = $request->input('author');
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');

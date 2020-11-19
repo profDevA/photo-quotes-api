@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Create Article</h1>
+                    <h1 class="m-0 text-dark">Edit Article</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -119,10 +119,27 @@
 
 @section('scripts')
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script src="{{asset('plugins/summernote-image-attribute/summernote-image-attributes.js')}}"></script>
+
 <script>
     $(function() {
         // Summernote
-        $('.textarea').summernote()
+        $('.textarea').summernote({
+        popover: {
+            image: [
+                ['custom', ['imageAttributes']],
+                ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                ['remove', ['removeMedia']]
+            ],
+        },
+        lang: 'en-US', // Change to your chosen language
+        imageAttributes:{
+            icon:'<i class="note-icon-pencil"/>',
+            removeEmpty:true, // true = remove attributes | false = leave empty if present
+            disableUpload: true // true = don't display Upload Options | Display Upload Options
+        }
+    })
         // File input
         bsCustomFileInput.init();
     })
