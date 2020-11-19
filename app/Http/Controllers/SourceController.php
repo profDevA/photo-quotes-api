@@ -68,6 +68,8 @@ class SourceController extends Controller
     public function edit(Source $source)
     {
         return view('source.edit', compact('source'));
+
+        
     }
 
     /**
