@@ -83,14 +83,14 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="quote_title">Quote Title</label>
-                                <input type="text" class="form-control" id="quote_title" name="quoteTitle" placeholder="Quote Title" value="{{$source->quoteTitle}}">
+                                <label for="source_meta_title">Meta Title</label>
+                                <input type="text" class="form-control" id="source_meta_title" name="metaTitle" placeholder="Meta Title" value="{{$source->quoteTitle}}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="meta_tag">Meta Tag</label>
-                                <input type="text" class="form-control" id="meta_tag" name="metatag" placeholder="Source name" value="{{$source->metatag}}">
+                                <label for="source_meta_description">Meta Description</label>
+                                <input type="text" class="form-control" id="source_meta_description" name="metaDescription" placeholder="Meta description" value="{{$source->metatag}}">
                             </div>
                         </div>
 
