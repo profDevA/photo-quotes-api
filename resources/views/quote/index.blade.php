@@ -67,7 +67,8 @@
                                 <th>New Date</th>
                                 <th>is Edited</th>
                                 <th>Rating</th>
-                                <th>is_english</th>
+                                <th>Is English?</th>
+                                <th>Tags</th>
                                 <th>Date Added</th>
                                 <th>Action</th>
                             </tr>
@@ -76,9 +77,9 @@
                             @foreach($quotes as $key=>$quote)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td>{{$quote->quote}}</td>
-                                    <td>{{$quote->visibleComments}}</td>
-                                    <td>{{$quote->hiddenComments}}</td>
+                                    <td><p>{{$quote->quote}}</p></td>
+                                    <td><p>{{$quote->visibleComments}}</p></td>
+                                    <td><p>{{$quote->hiddenComments}}</p></td>
                                     <td>{{$quote->visible == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->dataAdded ?? ''}}</td>
                                     <td>{{$quote->referenceId1}}</td>
@@ -93,7 +94,7 @@
                                     <td>{{$quote->IPAddress}}</td>
                                     <td>{{$quote->addedByUser}}</td>
                                     <td>{{$quote->originalQuote}}</td>
-                                    <td>{{$quote->quoteType}}</td>
+                                    <td>{{$quote->quoteType == 1 ? "Q" : "N"}}</td>
                                     <td>{{$quote->new == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->turnVisible == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->page}}</td>
@@ -102,6 +103,7 @@
                                     <td>{{$quote->isEdited == 1 ? "Yes" : "No"}}</td>
                                     <td>{{$quote->rating}}</td>
                                     <td>{{$quote->isEnglish == 1 ? "Yes" : "No"}}</td>
+                                    <td>{{$quote->tags ?? $quote->tags }}</td>
                                     <td>{{$quote->created_at}}</td>
                                     <td>
                                         <a href="{{ route('quotes.edit', $quote->id) }}" class="edit-article fa fa-edit"></a>

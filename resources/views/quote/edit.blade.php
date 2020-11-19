@@ -92,20 +92,20 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="quote_data_added">Date added</label>
                         <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ $quote->dataAdded }}">
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="quote_of_the_day">Quote of the day</label>
                         <div class="input-group">
                             <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
-                                <option value="1" {!! $quote->quoteOfTheDay == 1 ? 'selected' : '' !!}>Yes</option>
                                 <option value="0" {!! $quote->quoteOfTheDay == 0 ? 'selected' : '' !!}>No</option>
+                                <option value="1" {!! $quote->quoteOfTheDay == 1 ? 'selected' : '' !!}>Yes</option>
                             </select>
                         </div>
                     </div>
@@ -246,7 +246,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="tag_quote">Tags</label>
-                        <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma" value="{{ $quote->tags }}">
+                        <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma" value="{{ $tags_str }}">
                     </div>
                 </div>
 

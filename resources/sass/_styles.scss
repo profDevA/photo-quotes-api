@@ -87,6 +87,14 @@
             overflow: hidden;
             text-overflow: ellipsis;
 
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
+
             &:nth-child(3) {
                 max-width: 300px;
                 overflow: hidden;

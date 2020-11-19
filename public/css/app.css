@@ -10979,6 +10979,14 @@ a.text-dark:focus {
   text-overflow: ellipsis;
 }
 
+#quotetable tbody td p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 #quotetable tbody td:nth-child(3) {
   max-width: 300px;
   overflow: hidden;

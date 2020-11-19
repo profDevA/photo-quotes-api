@@ -101,7 +101,7 @@ class ArticleController extends Controller
             file_put_contents($path, $data);
             $img->removeAttribute('src');
             $img->removeAttribute('data-filename');
-            $img->setAttribute('src', $image_name);
+            $img->setAttribute('src', url('/') . $image_name);
         }
 
         $article = new Article;
@@ -205,7 +205,7 @@ class ArticleController extends Controller
                 file_put_contents($path, $data);
                 $img->removeAttribute('src');
                 $img->removeAttribute('data-filename');
-                $img->setAttribute('src', $image_name);
+                $img->setAttribute('src', url('/') . $image_name);
             }
         }
 

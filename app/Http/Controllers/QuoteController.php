@@ -20,6 +20,21 @@ class QuoteController extends Controller
     {
         //
         $quotes = Quote::all();
+
+        
+        foreach ($quotes as $key => $quote) {
+            $quote->tags = '';
+            if ($quote->tagquote) {
+                foreach ($quote->tagquote as $tagquote) {
+                    if ($tagquote->tag) {
+                        $quote->tags .= $tagquote->tag->name . ', ';
+                    }
+                }
+            }
+
+            $quote->tags = substr(trim($quote->tags), 0, -1);
+        }
+
         return view('quote.index', compact('quotes'));
     }
 
@@ -90,10 +105,15 @@ class QuoteController extends Controller
     {
         $books = Book::all();
         $sources = Source::all();
-        $tags = Tag::where('quoteId', '=', $quote->id)->get('name');
+        $tags = array();
 
-        dump($tags); exit;
-        return view('quote.edit', compact('quote', 'books', 'sources'));
+        foreach ($quote->tagquote as $key => $tagquote) {
+            $tags[] = Tag::find($tagquote->tagId)->name;
+        }
+
+        $tags_str = implode(', ', $tags);
+
+        return view('quote.edit', compact('quote', 'books', 'sources', 'tags_str'));
     }
 
     /**
@@ -105,7 +125,31 @@ class QuoteController extends Controller
      */
     public function update(Request $request, Quote $quote)
     {
-        $quote->update($request->all());
+        $quote_data = $request->all();
+        unset($quote_data['tags']);
+        
+        $tags_arr = array_map('trim', explode(',', $request->post('tags')));
+
+        $quote->update($quote_data);
+
+        foreach ($tags_arr as $key => $tag_name) {
+            $tag = Tag::where('name', '=', $tag_name)->first();
+
+            if ($tag === null) {
+                $tag = new Tag;
+                $tag->name = $tag_name;
+                $tag->save();
+            }
+
+            $tag_quote = TagQuote::where('tagId', $tag->id)->where('quoteId', $quote->id)->get();
+
+            if (count($tag_quote) == 0) {
+                $tag_quote = new TagQuote;
+                $tag_quote->tagId = $tag->id;
+                $tag_quote->quoteId = $quote->id;
+                $tag_quote->save();
+            }
+        }
 
         return redirect('quotes');
     }

@@ -22,4 +22,9 @@ class Quote extends Model
     {
         return $this->belongsTo('App\Models\Book', 'bookId', 'id');
     }
+
+    public function tagquote()
+    {
+        return $this->hasMany('App\Models\TagQuote', 'quoteId', 'id');
+    }
 }

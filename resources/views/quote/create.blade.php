@@ -103,8 +103,8 @@
                             <label for="quote_of_the_day">Quote of the day</label>
                             <div class="input-group">
                                 <select name="quoteOfTheDay" id="quote_of_the_day" class="form-control">
-                                    <option value="1">Yes</option>
                                     <option value="0">No</option>
+                                    <option value="1">Yes</option>
                                 </select>
                             </div>
                         </div>
