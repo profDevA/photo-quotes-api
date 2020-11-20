@@ -131,6 +131,7 @@
 @section('scripts')
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <script src="{{asset('plugins/summernote-image-attribute/summernote-image-attributes.js')}}"></script>
+
 <script>
     $(function() {
         // Summernote
