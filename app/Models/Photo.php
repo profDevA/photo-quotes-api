@@ -10,4 +10,8 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = ['sourceId', 'title', 'description', 'addedByUser', 'url', 'comments', 'visible'];
+
+    public function source() {
+        return $this->belongsTo('App\Models\Source', 'sourceId', 'id');
+    }
 }

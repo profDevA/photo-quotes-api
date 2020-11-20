@@ -36,6 +36,10 @@ class Source extends Model
         return $slug;
     
     }
+
+    public function photos() {
+        return $this->hasMany('App\Models\Photo', 'sourceId');
+    }
     
     use HasFactory;
 }

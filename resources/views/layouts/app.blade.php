@@ -136,6 +136,16 @@
                                 </p>
                             </a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a href="{{route('articles.index')}}"
+                               class="nav-link {{ request()->is('articles') || request()->is('articles/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-blog"></i>
+                                <p>
+                                    Articles
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="{{route('books.index')}}"
@@ -146,13 +156,13 @@
                                 </p>
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
-                            <a href="{{route('articles.index')}}"
-                               class="nav-link {{ request()->is('articles') || request()->is('articles/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-blog"></i>
+                            <a href="{{route('photos.index')}}"
+                               class="nav-link {{ request()->is('photos') || request()->is('photos/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-images"></i>
                                 <p>
-                                    Articles
+                                    Photos
                                 </p>
                             </a>
                         </li>
