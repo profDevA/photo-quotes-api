@@ -34,3 +34,5 @@ Route::resource('articleTypes', App\Http\Controllers\ArticleTypeController::clas
 Route::resource('books', App\Http\Controllers\BookController::class);
 
 Route::resource('tags', App\Http\Controllers\TagController::class);
+
+Route::resource('photos', App\Http\Controllers\PhotoController::class);
