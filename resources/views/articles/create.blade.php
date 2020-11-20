@@ -31,9 +31,20 @@
                     <input type="text" class="form-control" id="article-title" name="article_title" placeholder="Please Enter title" required>
                 </div>
                 <div class="form-group">
-                    <label for="article-content">Text</label>
-                    <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                    <label for="article_content">Text</label>
+                    <textarea class="textarea form-control" name="article_content" id="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="article_visible_comments">Visible Comments</label>
+                    <textarea class="textarea form-control" name="visible_comments" id="article_visible_comments" placeholder="Place visible coments here" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="article_hidden_comments">Hidden Comments</label>
+                    <textarea class="textarea form-control" name="hidden_comments" id="article_hidden_comments" placeholder="Place hidden comments here" rows="4"></textarea>
+                </div>
+
                 <div class="form-group">
                     <label for="article_url">Url</label>
                     <input type="text" class="form-control" id="article_url" name="url" placeholder="Article Url">
@@ -123,7 +134,7 @@
 <script>
     $(function() {
         // Summernote
-        $('.textarea').summernote({
+        $('#article_content').summernote({
         popover: {
             image: [
                 ['custom', ['imageAttributes']],

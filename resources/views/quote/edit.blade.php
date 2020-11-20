@@ -32,6 +32,7 @@
                     <div class="form-group">
                         <label for="quote_source">Source</label>
                         <select name="sourceId" id="quote_source" class="form-control">
+                            <option value="0">Select Source</option>
                             @foreach($sources as $key=>$source)
                             <option value="{{$source->id}}" {!! ( isset($quote->source) && $quote->source->id == $source->id ) ? 'selected':'' !!}>{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
                             @endforeach

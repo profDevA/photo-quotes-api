@@ -44,12 +44,20 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Slug</th>
+                                <th>Comments</th>
+                                <th>Bio</th>
+                                <th>URL name</th>
                                 <th>Source Name</th>
-                                <th>Quote Title</th>
-                                <th>Meta Tag</th>
-                                <th>Viewed</th>
+                                <th>IP Adress</th>
+                                <th>Viewed Times</th>
+                                <th>Viewed Times Date</th>
+                                <th>Quote Count Visible</th>
+                                <th>Meta Title</th>
+                                <th>Meta Description</th>
                                 <th>Visible</th>
                                 <th>Miscallaneus</th>
+                                <th>Date Added</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -58,12 +66,20 @@
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$source->firstName.' '.$source->middleName.' '.$source->lastName}}</td>
+                                    <td>{{$source->slug}}</td>
+                                    <td>{{$source->comments}}</td>
+                                    <td>{{$source->bio}}</td>
+                                    <td>{{$source->urlName}}</td>
                                     <td>{{$source->sourceName}}</td>
-                                    <td>{{$source->quoteTitle}}</td>
-                                    <td>{{$source->metatag}}</td>
+                                    <td>{{$source->ipAddress}}</td>
                                     <td>{{$source->viewed_Times}}</td>
+                                    <td>{{$source->viewed_times_date}}</td>
+                                    <td>{{$source->quoteCountVisible}}</td>
+                                    <td>{{$source->metaTitle}}</td>
+                                    <td>{{$source->metaDescription}}</td>
                                     <td>{{$source->visible ? "Yes" : "No"}}</td>
                                     <td>{{$source->misc ? "Yes" : "No"}}</td>
+                                    <td>{{$source->created_at}}</td>
                                     <td>
                                         <a href="{{ route('sources.edit', $source->id) }}"
                                            class="edit-article fa fa-edit"></a>

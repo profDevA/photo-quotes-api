@@ -111,6 +111,8 @@ class ArticleController extends Controller
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
         $article->source_id = $request->input('source_id');
+        $article->visible_comments = $request->input('visible_comments');
+        $article->hidden_comments = $request->input('hidden_comments');
         $article->featured_image = $new_file_name . '.' . $file_ext;
         $article->url = $request->input('url');
         $article->meta_title = $request->input('meta_title') != '' ? $request->input('meta_title') : $request->input('article_title');
@@ -215,6 +217,8 @@ class ArticleController extends Controller
         $article->visible = $request->input('visible');
         $article->category_id = $request->input('category_id');
         $article->source_id = $request->input('source_id');
+        $article->visible_comments = $request->input('visible_comments');
+        $article->hidden_comments = $request->input('hidden_comments');
         $article->url = $request->input('url');
         $article->meta_title = $request->input('meta_title') != '' ? $request->input('meta_title') : $request->input('article_title');
         $article->meta_description = $request->input('meta_description');

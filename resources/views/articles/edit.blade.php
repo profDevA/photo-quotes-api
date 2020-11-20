@@ -32,16 +32,27 @@
                     <input type="text" class="form-control" id="article-title" name="article_title" placeholder="Please Enter title" value="{{ $article->title ?? ''}}">
                 </div>
                 <div class="form-group">
-                    <label for="article-content">Text</label>
-                    <textarea class="textarea form-control" name="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $article->text ?? ''}}</textarea>
+                    <label for="article_content">Text</label>
+                    <textarea class="textarea form-control" name="article_content" id="article_content" placeholder="Place some text here" style="width: 100%; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $article->text ?? ''}}</textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="article_visible_comments">Visible Comments</label>
+                    <textarea class="textarea form-control" name="visible_comments" id="article_visible_comments" placeholder="Place visible coments here" rows="4">{{ $article->visible_comments }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="article_hidden_comments">Hidden Comments</label>
+                    <textarea class="textarea form-control" name="hidden_comments" id="article_hidden_comments" placeholder="Place hidden comments here" rows="4">{{ $article->hidden_comments }</textarea>
+                </div>
+
                 <div class="form-group">
                     <label for="article_url">Url</label>
                     <input type="text" class="form-control" id="article_url" name="url" placeholder="Article Url" value="{{$article->url}}">
                 </div>
                 <div class="form-group">
-                    <label for="article-title">Author</label>
-                    <input type="text" class="form-control" id="article-title" name="author" placeholder="Author" value="{{$article->author}}">
+                    <label for="article_author">Author</label>
+                    <input type="text" class="form-control" id="article_author" name="author" placeholder="Author" value="{{$article->author}}">
                 </div>
                 <div class="form-group">
                     <label>Source</label>
@@ -94,19 +105,19 @@
                             <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image">
                             <label class="custom-file-label" for="article-featured-image">{{ $article->url ?? 'Choose file'}}</label>
                         </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
-                        </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="meta_title">Meta Title</label>
                     <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title" value="{{$article->meta_title}}">
                 </div>
+
                 <div class="form-group">
                     <label for="meta_description">Meta Description</label>
                     <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description" value="{{$article->meta_description}}">
                 </div>
+
                 <div class="">
                     <button type="submit" class="btn btn-primary float-right mr-4">Submit</button>
                 </div>
@@ -125,7 +136,7 @@
 <script>
     $(function() {
         // Summernote
-        $('.textarea').summernote({
+        $('#article_content').summernote({
         popover: {
             image: [
                 ['custom', ['imageAttributes']],
