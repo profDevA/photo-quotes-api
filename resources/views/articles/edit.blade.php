@@ -43,7 +43,7 @@
 
                 <div class="form-group">
                     <label for="article_hidden_comments">Hidden Comments</label>
-                    <textarea class="textarea form-control" name="hidden_comments" id="article_hidden_comments" placeholder="Place hidden comments here" rows="4">{{ $article->hidden_comments }</textarea>
+                    <textarea class="textarea form-control" name="hidden_comments" id="article_hidden_comments" placeholder="Place hidden comments here" rows="4">{{ $article->hidden_comments }}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -76,9 +76,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Article Type</label>
+                    <label for="article_type">Article Type</label>
                     <div class="input-group">
-                        <select name="article_type" id="" class="form-control">
+                        <select name="article_type" id="article_type" class="form-control">
                             <option>Blog</option>
                             <option>Article</option>
                             <option>Interview</option>
