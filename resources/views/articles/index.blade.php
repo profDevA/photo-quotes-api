@@ -78,7 +78,7 @@
                                 <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
                                 <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
                                 <td>{{$article->category->name ?? ''}}</td>
-                                <td>{{$article->articletype->name ?? ''}}</td>
+                                <td>{{$article->article_type ?? ''}}</td>
                                 <td>{{$article->url}}</td>
                                 <td>{{$article->meta_title}}</td>
                                 <td>{{$article->meta_description}}</td>

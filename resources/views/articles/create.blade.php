@@ -59,7 +59,7 @@
                         <select name="source_id" id="" class="form-control">
                             <option value="0">Select Source</option>
                             @foreach($sources as $key => $source)
-                                <option value="{{ $source->id }}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                            <option value="{{ $source->id }}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -78,9 +78,9 @@
                     <label>Article Type</label>
                     <div class="input-group">
                         <select name="article_type" id="" class="form-control">
-                            @foreach($articlesTypes as $key => $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
+                            <option>Blog</option>
+                            <option>Article</option>
+                            <option>Interview</option>
                         </select>
                     </div>
                 </div>
@@ -111,12 +111,12 @@
                     <label for="meta_title">Meta Title</label>
                     <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Meta Title">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="meta_description">Meta Description</label>
                     <input type="text" class="form-control" id="meta_description" name="meta_description" placeholder="Meta Description">
                 </div>
-                
+
                 <div class="">
                     <button type="submit" class="btn btn-primary float-right mr-4">Submit</button>
                 </div>
@@ -136,21 +136,21 @@
     $(function() {
         // Summernote
         $('#article_content').summernote({
-        popover: {
-            image: [
-                ['custom', ['imageAttributes']],
-                ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-                ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                ['remove', ['removeMedia']]
-            ],
-        },
-        lang: 'en-US', // Change to your chosen language
-        imageAttributes:{
-            icon:'<i class="note-icon-pencil"/>',
-            removeEmpty:true, // true = remove attributes | false = leave empty if present
-            disableUpload: true // true = don't display Upload Options | Display Upload Options
-        }
-    })
+            popover: {
+                image: [
+                    ['custom', ['imageAttributes']],
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+            },
+            lang: 'en-US', // Change to your chosen language
+            imageAttributes: {
+                icon: '<i class="note-icon-pencil"/>',
+                removeEmpty: true, // true = remove attributes | false = leave empty if present
+                disableUpload: true // true = don't display Upload Options | Display Upload Options
+            }
+        })
         // File input
         bsCustomFileInput.init();
     })

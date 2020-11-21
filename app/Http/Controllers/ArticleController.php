@@ -35,7 +35,6 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        $articlesTypes = ArticleType::all();
         return view('articles.create', compact('categories', 'sources', 'articlesTypes'));
     }
 
@@ -148,7 +147,6 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        $articlesTypes = ArticleType::all();
         return view('articles.edit', compact('article', 'categories', 'sources', 'articlesTypes'));
     }
 

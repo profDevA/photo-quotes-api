@@ -79,9 +79,9 @@
                     <label>Article Type</label>
                     <div class="input-group">
                         <select name="article_type" id="" class="form-control">
-                            @foreach($articlesTypes as $key => $type)
-                                <option value="{{ $type->id }}" {!! ( isset($article->article_type) && $article->articletype->id == $type->id ) ? 'selected':'' !!}>{{ $type->name }}</option>
-                            @endforeach
+                            <option>Blog</option>
+                            <option>Article</option>
+                            <option>Interview</option>
                         </select>
                     </div>
                 </div>
