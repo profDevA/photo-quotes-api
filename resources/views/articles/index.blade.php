@@ -75,7 +75,7 @@
                                     @endif
                                 </td>
                                 <td>{{$article->author}}</td>
-                                <td>{{$article->source->lastName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->firstName ?? ''}}</td>
+                                <td>{{$article->source->firstName ?? ''}} {{$article->source->middleName ?? ''}} {{$article->source->lastName ?? ''}}</td>
                                 <td>{{$article->visible == 1 ? 'Yes' : 'No'}}</td>
                                 <td>{{$article->category->name ?? ''}}</td>
                                 <td>{{$article->article_type ?? ''}}</td>

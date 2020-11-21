@@ -66,7 +66,7 @@
                             <label for="book_source">Source</label>
                             <select name="source_id" id="book_source" class="form-control">
                                 @foreach($sources as $key=>$source)
-                                    <option value="{{$source->id}}">{{ $source->lastName.'_'.$source->middleName.'_'.$source->firstName }}</option>
+                                    <option value="{{$source->id}}">{{ $source->firstName.'_'.$source->middleName.'_'.$source->lastName }}</option>
                                 @endforeach
                             </select>
                         </div>

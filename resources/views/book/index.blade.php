@@ -65,7 +65,7 @@
                                     <td>{{$book->isbn}}</td>
                                     <td>{{$book->pubDate}}</td>
                                     <td>{{$book->author}}</td>
-                                    <td>{{$book->source->lastName ?? ''}} {{$book->source->middleName ?? ''}} {{$book->source->firstName ?? ''}}</td>
+                                    <td>{{$book->source->firstName ?? ''}} {{$book->source->middleName ?? ''}} {{$book->source->lastName ?? ''}}</td>
                                     <td>{{$book->category->name ?? ''}}</td>
                                     <td>{{$book->visible == 1 ? "Yes" : "No"}}</td>
                                     <td><p>{{$book->visibleComments}}</p></td>
