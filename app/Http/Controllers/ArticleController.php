@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\ArticleType;
 use App\Models\Category;
 use App\Models\Source;
 use Illuminate\Http\Request;
@@ -35,7 +34,7 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        return view('articles.create', compact('categories', 'sources', 'articlesTypes'));
+        return view('articles.create', compact('categories', 'sources'));
     }
 
     /**
@@ -147,7 +146,7 @@ class ArticleController extends Controller
         //
         $categories = Category::all();
         $sources = Source::all();
-        return view('articles.edit', compact('article', 'categories', 'sources', 'articlesTypes'));
+        return view('articles.edit', compact('article', 'categories', 'sources'));
     }
 
     /**
