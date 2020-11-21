@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArticleType;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Source;
@@ -30,8 +29,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
         $sources = Source::all();
-        $articlesTypes = ArticleType::all();
-        return view('book.create', compact('categories', 'sources', 'articlesTypes'));
+        return view('book.create', compact('categories', 'sources'));
     }
 
     /**
@@ -76,8 +74,7 @@ class BookController extends Controller
     {
         $categories = Category::all();
         $sources = Source::all();
-        $articlesTypes = ArticleType::all();
-        return view('book.edit', compact('book', 'categories', 'sources', 'articlesTypes'));
+        return view('book.edit', compact('book', 'categories', 'sources'));
     }
 
     /**

@@ -97,9 +97,7 @@ class ArticleController extends Controller
     
     public function get_all_blogs()
     {
-        $articletype = ArticleType::where('name', "Article")->with('article')->get();
-
-        $articles = $articletype[0]->article;
+        $articles = Article::where('article_type', 'Article')->get();
 
         return view('articles.index', compact('articles'));
     }
