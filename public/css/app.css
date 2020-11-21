@@ -11001,3 +11001,47 @@ a.text-dark:focus {
   padding: 0;
 }
 
+#booktable thead th {
+  vertical-align: middle;
+}
+
+#booktable thead .sorting::before,
+#booktable thead .sorting::after,
+#booktable thead .sorting_asc::before,
+#booktable thead .sorting_asc::after,
+#booktable thead .sorting_desc::before,
+#booktable thead .sorting_desc::after,
+#booktable thead .sorting_asc_disabled::before,
+#booktable thead .sorting_asc_disabled::after,
+#booktable thead .sorting_desc_disabled::before,
+#booktable thead .sorting_desc_disabled::after {
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+#booktable tbody td {
+  max-width: 200px;
+  padding: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#booktable tbody td p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+#booktable tbody td:last-child {
+  min-width: 50px;
+  text-align: center;
+}
+
+#booktable tbody td:last-child button {
+  padding: 0;
+}
+

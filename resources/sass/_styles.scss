@@ -111,3 +111,51 @@
         }
     }
 }
+
+#booktable {
+    thead {
+        th {
+            vertical-align: middle;
+        }
+
+        .sorting,
+        .sorting_asc,
+        .sorting_desc,
+        .sorting_asc_disabled,
+        .sorting_desc_disabled {
+            &::before,
+            &::after {
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    tbody {
+        td {
+            max-width: 200px;
+            padding: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
+
+            &:last-child {
+                min-width: 50px;
+                text-align: center;
+
+                button {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

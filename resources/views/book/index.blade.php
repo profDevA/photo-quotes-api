@@ -49,6 +49,8 @@
                                 <th>Source</th>
                                 <th>Category</th>
                                 <th>Visible</th>
+                                <th>Visible Comments</th>
+                                <th>Hidden Comments</th>
                                 <th>Amazon Url</th>
                                 <th>Book Image</th>
                                 <th>Book Store Name</th>
@@ -59,13 +61,15 @@
                             @foreach($books as $key=>$book)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td>{{$book->title}}</td>
+                                    <td><p>{{$book->title}}</p></td>
                                     <td>{{$book->isbn}}</td>
                                     <td>{{$book->pubDate}}</td>
                                     <td>{{$book->author}}</td>
                                     <td>{{$book->source->lastName ?? ''}} {{$book->source->middleName ?? ''}} {{$book->source->firstName ?? ''}}</td>
                                     <td>{{$book->category->name ?? ''}}</td>
                                     <td>{{$book->visible == 1 ? "Yes" : "No"}}</td>
+                                    <td><p>{{$book->visibleComments}}</p></td>
+                                    <td><p>{{$book->hiddenComments}}</p></td>
                                     <td>{{$book->amazonUrl}}</td>
                                     <td>
                                         <img src="/uploads/{{$book->bookImage}}" alt="" style="width: 70px;">
