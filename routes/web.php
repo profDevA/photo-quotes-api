@@ -29,8 +29,6 @@ Route::resource('sources', App\Http\Controllers\SourceController::class);
 
 Route::resource('category', App\Http\Controllers\CategoryController::class);
 
-Route::resource('articleTypes', App\Http\Controllers\ArticleTypeController::class);
-
 Route::resource('books', App\Http\Controllers\BookController::class);
 
 Route::resource('tags', App\Http\Controllers\TagController::class);

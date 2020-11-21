@@ -186,16 +186,6 @@
                                 </p>
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="{{route('articleTypes.index')}}"
-                               class="nav-link {{ request()->is('articleTypes') || request()->is('articleTypes/*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-list"></i>
-                                <p>
-                                    ArticleTypes
-                                </p>
-                            </a>
-                        </li>
                     @endif
 
                 </ul>
