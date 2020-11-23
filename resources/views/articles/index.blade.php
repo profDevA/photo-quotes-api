@@ -3,6 +3,7 @@
 @section('styles')
 <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/fancybox/jquery.fancybox.min.css')}}">
 @endsection
 
 @section('content')
@@ -62,16 +63,16 @@
                                 <td>{{++$key}}</td>
                                 <td>
                                     @if (strlen($article->title) > 60)
-                                        {{substr($article->title, 0, 60) . '...'}}
+                                    {{substr($article->title, 0, 60) . '...'}}
                                     @else
-                                        {{$article->title}}
+                                    {{$article->title}}
                                     @endif
                                 </td>
                                 <td>
                                     @if (strlen($article->text) > 120)
-                                        {{substr($article->text, 0, 120) . '...'}}
+                                    {{substr($article->text, 0, 120) . '...'}}
                                     @else
-                                        {{$article->text}}
+                                    {{$article->text}}
                                     @endif
                                 </td>
                                 <td>{{$article->author}}</td>
@@ -82,7 +83,11 @@
                                 <td>{{$article->url}}</td>
                                 <td>{{$article->meta_title}}</td>
                                 <td>{{$article->meta_description}}</td>
-                                <td>{{$article->featured_image}}</td>
+                                <td>
+                                    <a href="/uploads/{{$article->featured_image}}" data-fancybox>
+                                        <img src="/uploads/{{$article->featured_image}}" style="width: 70px;">
+                                    </a>
+                                </td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->slug) }}"></a>
                                     <a href="{{ route('articles.edit', $article->id) }}" class="edit-article fa fa-edit"></a>
@@ -109,8 +114,7 @@
 @endsection
 
 @section('scripts')
-
-
+<script src="{{ asset('plugins/fancybox/jquery.fancybox.min.js') }}"></script>
 
 <script>
     $(document).ready(function() {
