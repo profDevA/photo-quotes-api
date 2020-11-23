@@ -84,9 +84,11 @@
                                 <td>{{$article->meta_title}}</td>
                                 <td>{{$article->meta_description}}</td>
                                 <td>
+                                    @if ($article->featured_image)
                                     <a href="/uploads/{{$article->featured_image}}" data-fancybox>
                                         <img src="/uploads/{{$article->featured_image}}" style="width: 70px;">
                                     </a>
+                                    @endif
                                 </td>
                                 <td>
                                     <a class="view-article fa fa-eye" href="{{ route('articles.show', $article->slug) }}"></a>
