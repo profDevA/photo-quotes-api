@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Source extends Model
 {
     protected $fillable = [
-        'firstName','middleName','lastName', 'slug','comments','bio','urlName','visible','ipAddress','viewed_Times','sourceName','misc','metatag','quoteTitle','quoteCountVisible','viewed_times_date'
+        'firstName','middleName','lastName', 'slug','comments','bio','urlName','visible','ipAddress','viewed_Times','sourceName','misc','metatag','quoteTitle','quoteCountVisible','viewed_times_date', 'metaTitle', 'metaDescription', 'backgroundImage'
     ];
 
     public function setSlugAttribute($value) {

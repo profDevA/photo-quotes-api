@@ -43,6 +43,24 @@ class SourceController extends Controller
         $full_name = $request->input('firstName') . ' ' . $request->input('middleName') . ' ' . $request->input('lastName'); 
         $source_data['slug'] = Str::slug($full_name, '-');
 
+        $file_full_name = $request->file('backgroundImage')->getClientOriginalName();
+        $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
+        $file_ext = $request->file('backgroundImage')->getClientOriginalExtension();
+
+
+        $new_file_name = $file_name;
+        if (file_exists(public_path('uploads\\') . $file_full_name)) {
+            $i = 1;
+            while (file_exists(public_path('uploads\\') . $new_file_name . "." . $file_ext)) {
+                $new_file_name = $file_name . "($i)";
+                $i++;
+            }
+        }
+
+        $request->file('backgroundImage')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
+
+        $source_data['backgroundImage']= url('uploads') . '/' . $new_file_name . '.' . $file_ext;
+
         Source::create($source_data);
 
         return redirect('sources');
@@ -81,8 +99,31 @@ class SourceController extends Controller
      */
     public function update(Request $request, Source $source)
     {
-        //
-        $source->update($request->all());
+        $source_data = $request->all();
+
+        if ($request->input('backgroundImage')) {
+            $file_full_name = $request->file('backgroundImage')->getClientOriginalName();
+            $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
+            $file_ext = $request->file('backgroundImage')->getClientOriginalExtension();
+    
+    
+            $new_file_name = $file_name;
+            if (file_exists(public_path('uploads\\') . $file_full_name)) {
+                $i = 1;
+                while (file_exists(public_path('uploads\\') . $new_file_name . "." . $file_ext)) {
+                    $new_file_name = $file_name . "($i)";
+                    $i++;
+                }
+            }
+    
+            $request->file('backgroundImage')->move(public_path('uploads\\'), $new_file_name . '.' . $file_ext);
+    
+            $source_data['backgroundImage']= url('uploads') . '/' . $new_file_name . '.' . $file_ext;
+        }
+
+
+        $source->update($source_data);
+
         return redirect('sources');
     }
 

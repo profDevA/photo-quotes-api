@@ -72,11 +72,11 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="article-featured-image">Image Url</label>
+                            <label for="source_background_image">Source Background Image</label>
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="article-featured-image" name="article_featured_image" >
-                                    <label class="custom-file-label" for="article-featured-image">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="source_background_image" name="backgroundImage" >
+                                    <label class="custom-file-label" for="source_background_image">{{ $source->backgroundImage ?? 'Choose file'}}</label>
                                 </div>
                             </div>
                         </div>
