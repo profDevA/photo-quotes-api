@@ -101,7 +101,7 @@ class SourceController extends Controller
     {
         $source_data = $request->all();
 
-        if ($request->input('backgroundImage')) {
+        if ($request->file('backgroundImage')) {
             $file_full_name = $request->file('backgroundImage')->getClientOriginalName();
             $file_name = pathinfo($file_full_name, PATHINFO_FILENAME);
             $file_ext = $request->file('backgroundImage')->getClientOriginalExtension();
