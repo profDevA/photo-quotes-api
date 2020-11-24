@@ -16,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::where('article_type', 'Blog')->orderBy('created_at', 'desc')->paginate(10);
   
         return response()->json($articles);
         // $articletype = ArticleType::where('name', "Blog")->with('article')->get();
