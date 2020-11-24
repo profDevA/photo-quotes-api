@@ -10922,6 +10922,12 @@ a.text-dark:focus {
   color: #ffffff;
 }
 
+.bootstrap-tagsinput .badge {
+  margin: 2px 2px !important;
+  color: white;
+  background-color: #3498DB !important;
+}
+
 #articleTable tbody tr th {
   padding: 0.25rem;
 }

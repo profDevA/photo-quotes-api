@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('plugins/boostrap-tag-input/css/tagsinput.css')}}">
+@endsection
+
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -129,7 +133,7 @@
                             <input type="email" class="form-control" id="quote_sender_email" name="senderEmail" placeholder="Sender Email">
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="quote_sender_name">Sender Name</label>
@@ -174,7 +178,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="quote_turn_visible">Quote Turn Visible</label>
@@ -247,7 +251,9 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="tag_quote">Tags</label>
-                            <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma">
+{{--                            <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma">--}}
+                            <input data-role="tagsinput" name="tags" id="tag_quote" type="text" class="form-control">
+
                         </div>
                     </div>
 
@@ -281,6 +287,7 @@
 
 @section('scripts')
     <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <script src="{{asset('plugins/boostrap-tag-input/js/tagsinput.js')}}"></script>
     <script>
         $(function() {
             bsCustomFileInput.init();
