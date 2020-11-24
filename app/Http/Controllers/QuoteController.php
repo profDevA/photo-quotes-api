@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Tag;
 use App\Models\TagQuote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class QuoteController extends Controller
 {
@@ -21,7 +22,7 @@ class QuoteController extends Controller
         //
         $quotes = Quote::all();
 
-        
+
         foreach ($quotes as $key => $quote) {
             $quote->tags = '';
             if ($quote->tagquote) {
@@ -60,7 +61,7 @@ class QuoteController extends Controller
     {
         $quote_data = $request->all();
         unset($quote_data['tags']);
-        
+
         $tags_arr = array_map('trim', explode(',', $request->post('tags')));
 
         $quote = Quote::create($quote_data);
@@ -129,10 +130,22 @@ class QuoteController extends Controller
     {
         $quote_data = $request->all();
         unset($quote_data['tags']);
-        
+
         $tags_arr = array_map('trim', explode(',', $request->post('tags')));
 
         $quote->update($quote_data);
+
+        $oldtags_names = array();
+        $oldtags = $quote->tagquote;
+        foreach ($oldtags as $oldtag) {
+            $oldtags_names[] = $oldtag->tag->name;
+        }
+        $filtered = array_diff($oldtags_names, $tags_arr);
+
+        foreach ($filtered as $value){
+            $tag = Tag::where('name', '=', $value)->first();
+            TagQuote::where('tagId', $tag->id)->where('quoteId', $quote->id)->delete();
+        }
 
         foreach ($tags_arr as $key => $tag_name) {
             if($tag_name == "") continue;
