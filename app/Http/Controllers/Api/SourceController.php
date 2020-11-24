@@ -75,7 +75,7 @@ class SourceController extends Controller
         $source['Quotes'] = $quotes;
         $source['Books'] = $books;
         $source['Articles'] = $articles;
-        $source['Interviews'] = $articles;
+        $source['Interviews'] = $interviews;
 
         return response()->json($source);
     }
