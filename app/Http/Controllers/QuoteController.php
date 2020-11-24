@@ -66,6 +66,8 @@ class QuoteController extends Controller
         $quote = Quote::create($quote_data);
 
         foreach ($tags_arr as $key => $tag_name) {
+
+            if($tag_name == "") continue;
             $tag = Tag::where('name', '=', $tag_name)->first();
 
             if ($tag === null) {
@@ -133,6 +135,7 @@ class QuoteController extends Controller
         $quote->update($quote_data);
 
         foreach ($tags_arr as $key => $tag_name) {
+            if($tag_name == "") continue;
             $tag = Tag::where('name', '=', $tag_name)->first();
 
             if ($tag === null) {

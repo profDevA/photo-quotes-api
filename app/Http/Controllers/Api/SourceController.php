@@ -42,6 +42,7 @@ class SourceController extends Controller
     {
         // Source::create($request->all());
         // return redirect('sources');
+
     }
 
     /**
@@ -53,7 +54,21 @@ class SourceController extends Controller
     public function show($slug)
     {
         $source = Source::where('slug', $slug)->first();
-        $quotes = Quote::where('sourceId', $source['id'])->get();
+        $quotes = Quote::where('sourceId', $source['id'])->with('tagquote')->get();
+
+        $tag_names = array();
+        foreach($quotes as $quote){
+            $tagquotes = $quote->tagquote;
+            foreach ($tagquotes as $tagquote) {
+                $tag_names[] = $tagquote->tag->name;
+                
+            }
+            $quote['tag_name'] = $tag_names;
+        }
+
+        // dump($quotes);
+
+        // die();
         $books = Book::where('source_id', $source['id'])->get();
         $articles = Article::where('source_id', $source['id'])->get();
         $source['Quotes'] = $quotes;
