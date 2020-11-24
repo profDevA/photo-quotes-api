@@ -122,12 +122,11 @@ class PhotoController extends Controller
                     $i++;
                 }
             }
+
+            $request->file('photo')->move(public_path('uploads\\'), $new_photo_name . '.' . $photo_ext);
+    
+            $photo_data['url'] = url('uploads') . '/' . $new_photo_name . '.' . $photo_ext;
         }
-
-
-        $request->file('photo')->move(public_path('uploads\\'), $new_photo_name . '.' . $photo_ext);
-
-        $photo_data['url'] = url('uploads') . '/' . $new_photo_name . '.' . $photo_ext;
 
         $photo->update($photo_data);
 

@@ -253,7 +253,6 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="tag_quote">Tags</label>
-{{--                        <input type="text" name="tags" id="tag_quote" class="form-control" placeholder="Enter separated by comma" value="{{ $tags_str }}">--}}
                         <input data-role="tagsinput" name="tags" id="tag_quote" type="text" class="form-control" value="{{ $tags_str }}">
                     </div>
                 </div>

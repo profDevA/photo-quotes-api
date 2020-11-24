@@ -51,6 +51,7 @@
                                 <th>Comment</th>
                                 <th>Visible</th>
                                 <th>Date Added</th>
+                                <th>Date Changed</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -70,6 +71,7 @@
                                 <td>{{$photo->comment}}</td>
                                 <td>{{$photo->visible == 1 ? "Yes" : "No"}}</td>
                                 <td>{{$photo->created_at}}</td>
+                                <td>{{$photo->updated_at}}</td>
                                 <td>
                                     <a href="{{ route('photos.edit', $photo->id) }}" class="edit-article fa fa-edit"></a>
                                     <form action="{{ route('photos.destroy', $photo->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this article?');" style="display: inline-block;">
