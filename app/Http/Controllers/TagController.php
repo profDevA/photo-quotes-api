@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\TagQuote;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -86,6 +87,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete();
+        TagQuote::where('tagId', $tag->id)->delete();
         return back();
     }
 }
