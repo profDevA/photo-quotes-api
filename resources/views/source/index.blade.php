@@ -38,6 +38,18 @@
 
             <hr>
 
+            @if($message = Session::get('alert'))
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        {{$message}}
+                    </p>
+                </div>
+            </div>
+            @endif
+
+
             <div class="row">
                 <div class="col-md-12">
                     <table id="sourceTable" class="table table-bordered table-striped">
@@ -80,7 +92,7 @@
                                 <td>{{$source->metaTitle}}</td>
                                 <td>{{$source->metaDescription}}</td>
                                 <td>
-                                    <a href="{{$source->backgroundImage}}" data-fancybox >
+                                    <a href="{{$source->backgroundImage}}" data-fancybox>
                                         <img src="{{$source->backgroundImage}}" style="width: 70px;">
                                     </a>
                                 </td>

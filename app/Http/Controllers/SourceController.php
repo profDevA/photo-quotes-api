@@ -139,7 +139,12 @@ class SourceController extends Controller
      */
     public function destroy(Source $source)
     {
-        $source->delete();
-        return back();
+        try {
+            $source->delete();
+            return back();
+        } catch (\Throwable $th) {
+            // throw $th;
+            return back()->with('alert', "You cannot remove the source.");
+        }
     }
 }
