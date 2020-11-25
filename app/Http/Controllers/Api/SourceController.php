@@ -6,6 +6,7 @@ use App\Models\Source;
 use App\Models\Quote;
 use App\Models\Book;
 use App\Models\Article;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class SourceController extends Controller
@@ -70,11 +71,13 @@ class SourceController extends Controller
 
         // die();
         $books = Book::where('source_id', $source['id'])->get();
+        $gallery = Photo::where('sourceId', $source['id'])->get();
         $articles = Article::where('source_id', $source['id'])->where('article_type', 'Article')->get();
         $interviews = Article::where('source_id', $source['id'])->where('article_type', 'Interview')->get();
         $source['Quotes'] = $quotes;
         $source['Books'] = $books;
         $source['Articles'] = $articles;
+        $source['Gallery'] = $gallery;
         $source['Interviews'] = $interviews;
 
         return response()->json($source);
