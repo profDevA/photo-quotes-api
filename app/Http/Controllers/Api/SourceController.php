@@ -70,10 +70,12 @@ class SourceController extends Controller
 
         // die();
         $books = Book::where('source_id', $source['id'])->get();
-        $articles = Article::where('source_id', $source['id'])->get();
+        $articles = Article::where('source_id', $source['id'])->where('article_type', 'Article')->get();
+        $interviews = Article::where('source_id', $source['id'])->where('article_type', 'Interview')->get();
         $source['Quotes'] = $quotes;
         $source['Books'] = $books;
         $source['Articles'] = $articles;
+        $source['Interviews'] = $interviews;
 
         return response()->json($source);
     }
