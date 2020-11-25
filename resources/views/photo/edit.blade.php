@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label for="photo_source">Source</label>
                     <select name="sourceId" id="photo_source" class="form-control" required>
-                    <option value="0">Select Source</option>
+                    <option value="">Select Source</option>
                         @foreach($sources as $key=>$source)
                         <option value="{{$source->id}}" {!! isset($photo->source) && $photo->source->id == $source->id ? 'selected' : '' !!}>{{ ($source->firstName ? $source->firstName.'_' : '') . ($source->middleName ? $source->middleName.'_' : '') . ($source->lastName ? $source->lastName : '')}}</option>
                         @endforeach
