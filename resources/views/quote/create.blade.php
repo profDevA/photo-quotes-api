@@ -119,7 +119,7 @@
                         <div class="form-group">
                             <label for="quote_book_id">Quote Book</label>
                             <select name="bookId" id="quote_book_id" class="form-control">
-                                <option value="0">Select Book</option>
+                                <option value="">Select Book</option>
                                 @foreach($books as $key=>$book)
                                     <option value="{{$book->id}}">{{ $book->title }}</option>
                                 @endforeach

@@ -101,7 +101,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="quote_data_added">Date added</label>
-                        <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ $quote->dataAdded }}">
+                        <input type="date" class="form-control" id="quote_data_added" name="dataAdded" value="{{ date('Y-m-d', strtotime($quote->dataAdded)) }}">
                     </div>
                 </div>
 
@@ -121,9 +121,9 @@
                     <div class="form-group">
                         <label for="quote_book_id">Quote Book</label>
                         <select name="bookId" id="quote_book_id" class="form-control">
-                        <option value="0">Select Book</option>
+                        <option value="">Select Book</option>
                             @foreach($books as $key=>$book)
-                            <option value="{{$book->id}}" {!! isset($quote->book) && $quote->book->id == $book->id ? 'seelcted' : '' !!}>{{ $book->title }}</option>
+                            <option value="{{$book->id}}" {!! isset($quote->book) && $quote->book->id == $book->id ? 'selected' : '' !!}>{{ $book->title }}</option>
                             @endforeach
                         </select>
                     </div>
