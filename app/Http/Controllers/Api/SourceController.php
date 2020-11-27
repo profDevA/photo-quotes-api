@@ -55,7 +55,7 @@ class SourceController extends Controller
     public function show($slug)
     {
         $source = Source::where('slug', $slug)->first();
-        $quotes = Quote::where('sourceId', $source['id'])->with('tagquote')->get();
+        $quotes = Quote::where('sourceId', $source['id'])->with('tagquote')->with('book')->get();
 
         foreach($quotes as $quote){
             $tag_names = array();
@@ -67,9 +67,6 @@ class SourceController extends Controller
             $quote['tag_name'] = $tag_names;
         }
 
-        // dump($quotes);
-
-        // die();
         $books = Book::where('source_id', $source['id'])->get();
         $gallery = Photo::where('sourceId', $source['id'])->get();
         $articles = Article::where('source_id', $source['id'])->where('article_type', 'Article')->get();

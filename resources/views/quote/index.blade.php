@@ -52,7 +52,7 @@
                                 <th>ReferenceId3</th>
                                 <th>ReferenceId4</th>
                                 <th>Quote Of The Day</th>
-                                <th>bookid</th>
+                                <th>Book</th>
                                 <th>Sender Email</th>
                                 <th>Sender Name</th>
                                 <th>Source Name</th>
