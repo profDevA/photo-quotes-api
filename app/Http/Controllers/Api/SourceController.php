@@ -57,8 +57,8 @@ class SourceController extends Controller
         $source = Source::where('slug', $slug)->first();
         $quotes = Quote::where('sourceId', $source['id'])->with('tagquote')->get();
 
-        $tag_names = array();
         foreach($quotes as $quote){
+            $tag_names = array();
             $tagquotes = $quote->tagquote;
             foreach ($tagquotes as $tagquote) {
                 $tag_names[] = $tagquote->tag->name;
